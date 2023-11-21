@@ -27,7 +27,7 @@ public class DictPanel extends JPanel implements ListSelectionListener,
     JPanel panelLeftTop, panelLeftBot, panelRightTop, panelRightBottom;
     JLabel labelLogo, labelSearchBar, labelDescription;
     JFormattedTextField searchBar;
-    JButton buttonSearch, buttonClear, buttonUp, buttonDown, buttonAdd, buttonDelete, buttonEdit, buttonStar;
+    JButton buttonSearch, buttonClear, buttonUp, buttonDown, buttonAdd, buttonDelete, buttonEdit, buttonStar,buttonAPI;
 
     JList<String> listWord, listRecent, listMark;
     JScrollPane scrollPaneWord, scrollPaneRecent, scrollPaneMark;
@@ -81,6 +81,7 @@ public class DictPanel extends JPanel implements ListSelectionListener,
         panelLeftBot.setLayout(null);
         panelLeftBot.setBackground(Color.gray);
 
+
         this.add(panelLeftBot);
         addPanelLeftBot();
 
@@ -111,8 +112,9 @@ public class DictPanel extends JPanel implements ListSelectionListener,
         for (int i = 0; i < dictionaryManagement.getDictionary().getRecent().size(); i++) {
             listModelRecent.addElement(dictionaryManagement.getDictionary().getRecent().get(i));
         }
-        for (int i = 0; i < dictionaryManagement.getDictionary().getRecent().size(); i++) {
+        for (int i = 0; i < dictionaryManagement.getDictionary().getMark().size(); i++) {
             listModelMark.addElement(dictionaryManagement.getDictionary().getMark().get(i));
+
         }
     }
 
@@ -121,18 +123,24 @@ public class DictPanel extends JPanel implements ListSelectionListener,
      */
     void addPanelLeftTop() {
         labelLogo = new JLabel();
-        ImageIcon imageDictLogo = new ImageIcon(iconLogo.getImage());
+        ImageIcon imageDictLogo = new ImageIcon(bg4.getImage());
         labelLogo.setIcon(imageDictLogo);
-
         labelLogo.setBounds(0, 0, 290, 110);
-        labelLogo.setForeground(Color.LIGHT_GRAY);
         panelLeftTop.add(labelLogo);
+
     }
 
     void addPanelLeftBot() {
+        JLabel label1 = new JLabel();
+        ImageIcon imageIcon1 = new ImageIcon(bg1.getImage());
+        label1.setIcon(imageIcon1);
+        label1.setBounds(0,0,290,590);
+
+
         //chữ tìm kiếm
-        labelSearchBar = new JLabel("-Search-");
-        labelSearchBar.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 16));
+        labelSearchBar = new JLabel("⁂ Search ⁂");
+        labelSearchBar.setFont(new Font(Font.MONOSPACED, Font.BOLD, 16));
+        labelSearchBar.setForeground(Color.white);
         labelSearchBar.setBounds(10, 2, 180, 20);
         panelLeftBot.add(labelSearchBar);
 
@@ -141,47 +149,30 @@ public class DictPanel extends JPanel implements ListSelectionListener,
         searchBar.setColumns(10); //hiện tối đa 10 từ
         searchBar.setFont(new Font(Font.SANS_SERIF, Font.TRUETYPE_FONT | Font.BOLD, 14));
         searchBar.getDocument().addDocumentListener(this);
-        searchBar.setBounds(40, 25, 190, 25);
+        searchBar.setBounds(40, 30, 190, 25);
         searchBar.setToolTipText("Nhập từ cần biết");
         searchBar.addKeyListener(this);
         searchBar.addMouseListener(this);
         panelLeftBot.add(searchBar);
 
         //button search
-        buttonSearch = new JButton();
-        buttonSearch.setBounds(240, 25, 40, 25);
+        buttonSearch = new RoundButton("",20,20);
+        buttonSearch.setBounds(240, 30, 40, 25);
         buttonSearch.addActionListener(this);
         buttonSearch.setIcon(iconSearch);
         buttonSearch.setToolTipText("Tra từ");
         panelLeftBot.add(buttonSearch);
 
         //button clear
-        buttonClear = new JButton();
-        buttonClear.setBounds(10, 25, 25, 25);
+        buttonClear = new RoundButton("",10,10);
+        buttonClear.setBounds(10, 30, 25, 25);
         buttonClear.addActionListener(this);
         buttonClear.setIcon(iconClear);
         buttonClear.setToolTipText("Xoá hết");
         panelLeftBot.add(buttonClear);
 
-        //button up down
-        buttonUp = new JButton("up");
-        //buttonUp.setIcon(iconUp);
-        /*buttonUp.setToolTipText("Lên trên");
-        buttonUp.setBounds(10, 170, 25, 25);
-        buttonUp.setContentAreaFilled(false);
-        buttonUp.setBorderPainted(false);
-        buttonUp.addActionListener(this);
-        panelLeftBot.add(buttonUp);
 
-        // Button Down
-        buttonDown = new JButton("down");
-        buttonDown.setBounds(10, 200, 25, 25);
-        //buttonDown.setIcon(iconDown);
-        buttonDown.setToolTipText("Xuống dưới");
-        buttonDown.setContentAreaFilled(false);
-        buttonDown.setBorderPainted(false);
-        buttonDown.addActionListener(this);
-        panelLeftBot.add(buttonDown);*/
+
 
 
         /**create prepared list*/
@@ -217,7 +208,7 @@ public class DictPanel extends JPanel implements ListSelectionListener,
         scrollPaneMark.setHorizontalScrollBar(null);
 
         tabbedPane = new JTabbedPane();
-        tabbedPane.setBounds(25, 60, 240, 390);
+        tabbedPane.setBounds(25, 70, 240, 390);
         tabbedPane.setBackground(Color.white);
         tabbedPane.setVisible(true);
 
@@ -255,50 +246,63 @@ public class DictPanel extends JPanel implements ListSelectionListener,
         panelLeftBot.add(tabbedPane);
         tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
 
+        buttonAPI = new RoundButton("Dịch câu",20,20);
+        buttonAPI.setBounds(20, 470, 120, 30);
+        buttonAPI.addActionListener(this);
+        buttonAPI.setIcon(null);
+        buttonAPI.setToolTipText("Dịch câu");
+        buttonAPI.setIcon(iconTrans);
 
+        panelLeftBot.add(buttonAPI);
+        panelLeftBot.add(label1);
     }
 
     void addPanelRightTop() {
-        buttonAdd = new JButton("Thêm");
+        JLabel label1 = new JLabel();
+        ImageIcon imageIcon1 = new ImageIcon(bg2.getImage());
+        label1.setIcon(imageIcon1);
+        label1.setBounds(0, 0, 610, 110);
+
+        buttonAdd = new RoundButton("Thêm",20,20);
         buttonAdd.setIcon(iconAdd);
 
         buttonAdd.setBounds(50, 40, 135, 30);
         buttonAdd.setToolTipText("Thêm từ vào từ điển này");
-        buttonAdd.setContentAreaFilled(false);
+        //buttonAdd.setContentAreaFilled(false);
         buttonAdd.addActionListener(this);
 
-        buttonAdd.setBackground(Color.white);
-        buttonAdd.setOpaque(true);
+        /*buttonAdd.setBackground(Color.white);
+        buttonAdd.setOpaque(true);*/
 
         panelRightTop.add(buttonAdd);
 
         // Button Modify
-        buttonEdit = new JButton("Sửa");
+        buttonEdit = new RoundButton("Sửa",20,20);
         buttonEdit.setIcon(iconFix);
 
         buttonEdit.setBounds(235, 40, 135, 30);
         buttonEdit.setToolTipText("Sửa từ");
-        buttonEdit.setContentAreaFilled(false);
+        //buttonEdit.setContentAreaFilled(false);
         buttonEdit.addActionListener(this);
         buttonEdit.setEnabled(false);
 
-        buttonEdit.setBackground(Color.white);
-        buttonEdit.setOpaque(true);
+        /*buttonEdit.setBackground(Color.white);
+        buttonEdit.setOpaque(true);*/
 
         panelRightTop.add(buttonEdit);
 
         // Button Delete
-        buttonDelete = new JButton("Xóa");
+        buttonDelete = new RoundButton("Xóa",20,20);
         buttonDelete.setIcon(iconDelete);
 
         buttonDelete.setBounds(420, 40, 135, 30);
         buttonDelete.setToolTipText("Xóa từ");
-        buttonDelete.setContentAreaFilled(false);
+        //buttonDelete.setContentAreaFilled(false);
         buttonDelete.addActionListener(this);
         buttonDelete.setEnabled(false);
 
-        buttonDelete.setBackground(Color.white);
-        buttonDelete.setOpaque(true);
+        /*buttonDelete.setBackground(Color.white);
+        buttonDelete.setOpaque(true);*/
 
         panelRightTop.add(buttonDelete);
 
@@ -313,25 +317,34 @@ public class DictPanel extends JPanel implements ListSelectionListener,
         buttonStar.setEnabled(false);
         buttonStar.addActionListener(this);
         panelRightTop.add(buttonStar);
+        panelRightTop.add(label1);
     }
 
     void addPanelRightBottom() {
+        JLabel label1 = new JLabel();
+        ImageIcon imageIcon1 = new ImageIcon(bg3.getImage());
+        label1.setIcon(imageIcon1);
+        label1.setBounds(0, 0, 610, 590);
+
         labelDescription = new JLabel("Nghĩa của từ : ");
-        labelDescription.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 16));
+        labelDescription.setFont(new Font(Font.MONOSPACED, Font.BOLD, 18));
+        labelDescription.setForeground(Color.white);
         labelDescription.setBounds(15, 20, 180, 20);
         panelRightBottom.add(labelDescription);
 
-        textPane = new JTextPane();
+        textPane = new RoundTextPane(20,20);
+        //textPane.setLineWrap(true);
         Border border = BorderFactory.createLineBorder(Color.BLUE);
         textPane.setBorder(
                 BorderFactory.createCompoundBorder(border, BorderFactory.createBevelBorder(BevelBorder.LOWERED)));
-        textPane.setFont(new Font(Font.SANS_SERIF, Font.ITALIC, 14));
+        textPane.setFont(new Font("Helvetica Neue", Font.ITALIC + Font.BOLD, 16));
 
         textScrollPane = new JScrollPane();
         textScrollPane.setViewportView(textPane);
-        textScrollPane.setBounds(10, 50, 570, 480);
+        textScrollPane.setBounds(20, 60, 540, 440);
         textScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         panelRightBottom.add(textScrollPane);
+        panelRightBottom.add(label1);
     }
 
 
@@ -348,8 +361,9 @@ public class DictPanel extends JPanel implements ListSelectionListener,
                 vieString = vieString.replace("</Q></N></I></F></C>", "");
                 vieString = vieString.replace("<br />-", "\n\t-");
                 vieString = vieString.replace("<br />=", "\n\t\t=");
-                vieString = vieString.replace("<br />*", "\n*");
+                vieString = vieString.replace("<br />*", "\n ✽");
                 vieString = vieString.replace("<br />", "\n");
+                vieString = vieString.replace("@", "✨  ");
                 textPane.setText(vieString);
 
             }
@@ -402,9 +416,16 @@ public class DictPanel extends JPanel implements ListSelectionListener,
             updateWord(getSelectedWord());
         } else if (e.getSource().equals(buttonDelete)) {
             deleteWordPanel(getSelectedWord());
-        } /*else if (e.getSource().equals(btnUp)) {
-            selectUpWord();
-        } else if (e.getSource().equals(btnDown)) {
+        } else if (e.getSource().equals(buttonAPI)) {
+
+            NewWindow newWindow = new NewWindow();
+            Window window = SwingUtilities.getWindowAncestor(this);
+
+            // Kiểm tra nếu cửa sổ gốc là một JFrame trước khi đóng
+            if (window instanceof JFrame) {
+                ((JFrame) window).dispose(); // Đóng cửa sổ nếu là JFrame
+            }
+        } /*else if (e.getSource().equals(btnDown)) {
             selectDownWord();
         } else if (e.getSource().equals(btnPronounce)) {
             System.out.println("PA");

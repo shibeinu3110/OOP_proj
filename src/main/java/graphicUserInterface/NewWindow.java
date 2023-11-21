@@ -1,0 +1,198 @@
+package graphicUserInterface;
+
+import javax.swing.*;
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
+import static imageDictionary.imageList.*;
+
+
+
+public class NewWindow extends JFrame implements ActionListener {
+    private final int WIDTH_WINDOW = 900;
+    private final int HEIGHT_WINDOW = 700;
+    private DictPanel dictionaryPanel;
+    //public long end = Calendar.getInstance().getTimeInMillis(); //Timer
+
+    //protected JSplitPane split;
+    JButton buttonBack , buttonTrans;
+
+    JTextArea textFieldQues;
+    JTextArea textFieldAns;
+    JPanel jPanelTop,jPanelBot;
+
+    boolean engToVie = true;
+    String[] option = {"Tiếng Anh -- English" , "Tiếng Việt -- Vietnamese"};
+    String[] option1 = {"Tiếng Việt -- Vietnamese" , "Tiếng Anh -- English"};
+    JComboBox jComboBox1 , jComboBox2;
+
+    public NewWindow() {
+        super("Dictionary EV ");            //set title
+        //Container container = getContentPane(); //create container
+
+        this.setSize(WIDTH_WINDOW, HEIGHT_WINDOW);   //set size for app
+        this.setLocationRelativeTo(null);            //set location is center
+        this.setLayout(null);
+        //container.setLayout(new BorderLayout());
+
+        //add panel to frame
+        /*dictionaryPanel = new DictPanel();
+        container.add(dictionaryPanel, BorderLayout.CENTER);*/
+
+        //System.out.println("Time: " + (end - Main.begin)); //Timer
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setResizable(false);
+        setVisible(true);
+
+
+
+        jPanelTop = new JPanel();
+        jPanelTop.setBounds(0,0,900,150);
+        jPanelTop.setLayout(null);
+        jPanelTop.setBackground(Color.gray);
+
+        this.add(jPanelTop);
+        addToTop();
+
+        jPanelBot = new JPanel();
+        jPanelBot.setBounds(0,150,900,550);
+        jPanelBot.setLayout(null);
+        jPanelBot.setBackground(Color.blue);
+
+        this.add(jPanelBot);
+        addToBot();
+    }
+
+    void addToTop()
+    {
+
+    }
+
+    void addToBot()
+    {
+        //button
+        buttonBack = new RoundButton("Back",20,20);
+
+        buttonBack.setBounds(20, 450, 100, 25);
+        /*buttonBack.setBackground(Color.white);
+        buttonBack.setOpaque(true);*/
+        buttonBack.addActionListener(this);
+        buttonBack.setIcon(iconBack);
+        buttonBack.setToolTipText("Thoát");
+        jPanelBot.add(buttonBack);
+
+        //text 1
+        textFieldQues = new JTextArea();
+        textFieldQues.setFont(new Font("SANS_SERIF", Font.BOLD, 18));
+        textFieldQues.setLineWrap(true);
+        textFieldQues.setWrapStyleWord(true);
+
+        JScrollPane scrollPane = new JScrollPane(textFieldQues);
+        scrollPane.setBounds(30, 90, 350, 300);
+        jPanelBot.add(scrollPane, BorderLayout.CENTER);
+
+
+        //text2
+        textFieldAns = new JTextArea();
+        textFieldAns.setFont(new Font("SANS_SERIF", Font.BOLD, 18));
+        textFieldAns.setLineWrap(true);
+        textFieldAns.setWrapStyleWord(true);
+
+        JScrollPane scrollPane1 = new JScrollPane(textFieldAns);
+        scrollPane1.setBounds(520, 90, 350, 300);
+
+        jPanelBot.add(scrollPane1, BorderLayout.CENTER);
+
+        //button translate
+        buttonTrans = new RoundButton("Dịch",20,20);
+        buttonTrans.setIcon(iconTrans);
+        buttonTrans.setBounds(406, 177, 90, 36);
+        buttonTrans.addActionListener(this);
+        buttonTrans.setToolTipText("Tra từ");
+        jPanelBot.add(buttonTrans);
+
+        jComboBox1 = new JComboBox(option);
+        jComboBox2 = new JComboBox(option1);
+
+
+
+        jComboBox1.setRenderer(new IconComboBoxRenderer(engIcon, vieIcon));
+        jComboBox2.setRenderer(new IconComboBoxRenderer(vieIcon, engIcon));
+
+
+        jComboBox1.setBounds(30,50,200,30);
+        jComboBox2.setBounds(520,50,200,30);
+
+
+        jPanelBot.add(jComboBox1);
+        jPanelBot.add(jComboBox2);
+    }
+
+    void checkEngToVie()
+    {
+        if(jComboBox1.getSelectedItem().equals("Tiếng Anh -- English") && jComboBox2.getSelectedItem().equals("Tiếng Việt -- Vietnamese"))
+        {
+            engToVie  = true;
+        }
+        else if(jComboBox2.getSelectedItem().equals("Tiếng Anh -- English") && jComboBox1.getSelectedItem().equals("Tiếng Việt -- Vietnamese"))
+        {
+            engToVie = false;
+        }
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource().equals(buttonBack))
+        {
+            this.dispose();
+            Frame newFrame = new Frame();
+        }
+        if(e.getSource().equals(buttonTrans))
+        {
+            checkEngToVie();
+            if(this.engToVie)
+            {
+                this.textFieldAns.setText(Translator.translateEnToVi(this.textFieldQues.getText()));
+            }
+            else
+            {
+                this.textFieldAns.setText(Translator.translateViToEn(this.textFieldQues.getText()));
+            }
+        }
+    }
+
+    static class IconComboBoxRenderer extends DefaultListCellRenderer {
+        private final ImageIcon iconEnglish;
+        private final ImageIcon iconVietnamese;
+
+        public IconComboBoxRenderer(ImageIcon iconEnglish, ImageIcon iconVietnamese) {
+            this.iconEnglish = iconEnglish;
+            this.iconVietnamese = iconVietnamese;
+        }
+
+        @Override
+        public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected,
+                                                      boolean cellHasFocus) {
+            super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+
+            if (value != null) {
+                String text = value.toString();
+                if (text.equals("Tiếng Anh -- English")) {
+                    setIcon(iconEnglish);
+                } else if (text.equals("Tiếng Việt -- Vietnamese")) {
+                    setIcon(iconVietnamese);
+                } else {
+                    setIcon(null);
+                }
+            }
+
+            return this;
+        }
+    }
+
+}
+
+
+
