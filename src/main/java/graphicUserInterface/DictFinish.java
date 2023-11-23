@@ -6,6 +6,6 @@ public class DictFinish {
     }
 
     public void run() {
-        Frame frame = new Frame();
+        Menu menu = new Menu();
     }
 }

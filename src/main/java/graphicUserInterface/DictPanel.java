@@ -19,7 +19,7 @@ import static imageDictionary.imageList.*;
 import static imageDictionary.imageList.iconSound;
 import static sound.SoundPlay.isPlaying;
 
-public class DictPanel extends JPanel implements ListSelectionListener,
+public class DictPanel extends JFrame implements ListSelectionListener,
         DocumentListener,
         ActionListener,
         KeyListener,
@@ -31,7 +31,7 @@ public class DictPanel extends JPanel implements ListSelectionListener,
     JPanel panelLeftTop, panelLeftBot, panelRightTop, panelRightBottom;
     JLabel labelLogo, labelSearchBar, labelDescription;
     JFormattedTextField searchBar;
-    JButton buttonSearch, buttonClear, buttonUp, buttonDown, buttonAdd, buttonDelete, buttonEdit, buttonStar,buttonAPI,buttonSoundUK, buttonSoundUS, buttonAudio;
+    JButton buttonSearch, buttonClear, buttonUp, buttonDown, buttonAdd, buttonDelete, buttonEdit, buttonStar,buttonAPI,buttonSoundUK, buttonSoundUS, buttonAudio, buttonBack;
 
     JList<String> listWord, listRecent, listMark;
     JScrollPane scrollPaneWord, scrollPaneRecent, scrollPaneMark;
@@ -42,6 +42,8 @@ public class DictPanel extends JPanel implements ListSelectionListener,
     private ArrayList<Word> listDict;
     int countMouse = 0;
 
+    private final int WIDTH_WINDOW = 900;
+    private final int HEIGHT_WINDOW = 700;
 
     /**
      * end
@@ -53,6 +55,24 @@ public class DictPanel extends JPanel implements ListSelectionListener,
      */
     //create base frame
     public DictPanel() {
+
+        super("Dictionary EV ");            //set title
+        //Container container = getContentPane(); //create container
+
+        this.setSize(WIDTH_WINDOW, HEIGHT_WINDOW);   //set size for app
+        this.setLocationRelativeTo(null);            //set location is center
+        this.setLayout(null);
+        //container.setLayout(new BorderLayout());
+
+        //add panel to frame
+        /*dictionaryPanel = new DictPanel();
+        container.add(dictionaryPanel, BorderLayout.CENTER);*/
+
+        //System.out.println("Time: " + (end - Main.begin)); //Timer
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setResizable(false);
+        setVisible(true);
+
         dictionaryManagement = new DictionaryManagement();
         //load list of word
         /**list of vie string*/
@@ -263,14 +283,22 @@ public class DictPanel extends JPanel implements ListSelectionListener,
         panelLeftBot.add(tabbedPane);
         tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
 
-        buttonAPI = new RoundButton("Dịch câu",20,20);
+        /*buttonAPI = new RoundButton("Dịch câu",20,20);
         buttonAPI.setBounds(20, 470, 120, 30);
         buttonAPI.addActionListener(this);
-        buttonAPI.setIcon(null);
         buttonAPI.setToolTipText("Dịch câu");
         buttonAPI.setIcon(iconTrans);
 
-        panelLeftBot.add(buttonAPI);
+        panelLeftBot.add(buttonAPI);*/
+        buttonBack = new RoundButton("Back",20,20);
+
+        buttonBack.setBounds(20, 470, 120, 30);
+        /*buttonBack.setBackground(Color.white);
+        buttonBack.setOpaque(true);*/
+        buttonBack.addActionListener(this);
+        buttonBack.setIcon(iconBack);
+        buttonBack.setToolTipText("Thoát");
+        panelLeftBot.add(buttonBack);
         panelLeftBot.add(label1);
 
     }
@@ -459,15 +487,10 @@ public class DictPanel extends JPanel implements ListSelectionListener,
         } else if (e.getSource().equals(buttonDelete)) {
             sound.SoundPlay.playSoundNonReset("sound/click.wav");
             deleteWordPanel(getSelectedWord());
-        } else if (e.getSource().equals(buttonAPI)) {
+        } else if (e.getSource().equals(buttonBack)) {
             sound.SoundPlay.playSoundNonReset("sound/click.wav");
-            NewWindow newWindow = new NewWindow();
-            Window window = SwingUtilities.getWindowAncestor(this);
-
-            // Kiểm tra nếu cửa sổ gốc là một JFrame trước khi đóng
-            if (window instanceof JFrame) {
-                ((JFrame) window).dispose(); // Đóng cửa sổ nếu là JFrame
-            }
+            this.dispose();
+            DictFinish dictFinish = new DictFinish();
         } /*else if (e.getSource().equals(btnDown)) {
             selectDownWord();
         } else if (e.getSource().equals(btnPronounce)) {
@@ -525,6 +548,7 @@ public class DictPanel extends JPanel implements ListSelectionListener,
             isPlaying = !isPlaying;
         }
     }
+
 
     private void insertWord() {
         JTextField wordField = new JTextField(15);

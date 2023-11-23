@@ -185,7 +185,7 @@ public class NewWindow extends JFrame implements ActionListener {
         {
             sound.SoundPlay.playSoundNonReset("sound/click.wav");
             this.dispose();
-            Frame newFrame = new Frame();
+            DictFinish dictFinish = new DictFinish();
         }
         if(e.getSource().equals(buttonTrans))
         {
