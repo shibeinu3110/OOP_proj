@@ -8,7 +8,6 @@ public class Frame extends JFrame {
     private final int HEIGHT_WINDOW = 700;
     private DictPanel dictionaryPanel;
     //public long end = Calendar.getInstance().getTimeInMillis(); //Timer
-
     protected JSplitPane split;
 
     public Frame() {

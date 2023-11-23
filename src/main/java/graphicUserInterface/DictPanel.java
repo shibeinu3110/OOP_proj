@@ -4,6 +4,8 @@ import connectData.JBDCUtil;
 import connectData.WordDAO;
 import model.DictionaryManagement;
 import model.Word;
+import API.SpeechText;
+
 
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
@@ -14,6 +16,8 @@ import java.awt.event.*;
 import java.util.ArrayList;
 
 import static imageDictionary.imageList.*;
+import static imageDictionary.imageList.iconSound;
+import static sound.SoundPlay.isPlaying;
 
 public class DictPanel extends JPanel implements ListSelectionListener,
         DocumentListener,
@@ -27,7 +31,7 @@ public class DictPanel extends JPanel implements ListSelectionListener,
     JPanel panelLeftTop, panelLeftBot, panelRightTop, panelRightBottom;
     JLabel labelLogo, labelSearchBar, labelDescription;
     JFormattedTextField searchBar;
-    JButton buttonSearch, buttonClear, buttonUp, buttonDown, buttonAdd, buttonDelete, buttonEdit, buttonStar,buttonAPI;
+    JButton buttonSearch, buttonClear, buttonUp, buttonDown, buttonAdd, buttonDelete, buttonEdit, buttonStar,buttonAPI,buttonSound, buttonAudio;
 
     JList<String> listWord, listRecent, listMark;
     JScrollPane scrollPaneWord, scrollPaneRecent, scrollPaneMark;
@@ -50,7 +54,6 @@ public class DictPanel extends JPanel implements ListSelectionListener,
     //create base frame
     public DictPanel() {
         dictionaryManagement = new DictionaryManagement();
-
         //load list of word
         /**list of vie string*/
         listModelWord = new DefaultListModel<String>();
@@ -141,7 +144,7 @@ public class DictPanel extends JPanel implements ListSelectionListener,
         labelSearchBar = new JLabel("⁂ Search ⁂");
         labelSearchBar.setFont(new Font(Font.MONOSPACED, Font.BOLD, 16));
         labelSearchBar.setForeground(Color.white);
-        labelSearchBar.setBounds(10, 2, 180, 20);
+        labelSearchBar.setBounds(85, 2, 180, 20);
         panelLeftBot.add(labelSearchBar);
 
         //search bar
@@ -171,7 +174,27 @@ public class DictPanel extends JPanel implements ListSelectionListener,
         buttonClear.setToolTipText("Xoá hết");
         panelLeftBot.add(buttonClear);
 
+        //button sound
+        buttonSound = new RoundButton("",25, 25);
+        buttonSound.setBounds(248, 65, 25, 25);
+        buttonSound.addActionListener(this);
+        buttonSound.setIcon(iconSound);
+        buttonSound.setToolTipText("Âm thanh của từ");
+        panelLeftBot.add(buttonSound);
 
+        //button audio
+        buttonAudio = new RoundButton("",45,45);
+        buttonAudio.setBounds(10, 0, 25, 25);
+        buttonAudio.addActionListener(this);
+        if (isPlaying) {
+            buttonAudio.setIcon(iconAudioOff);
+            buttonAudio.setToolTipText("Nhấn vào đây để bật nhạc");
+        }
+        else {
+            buttonAudio.setIcon(iconAudioOn);
+            buttonAudio.setToolTipText("Nhấn vào đây để tắt nhạc");
+        }
+        panelLeftBot.add(buttonAudio);
 
 
 
@@ -234,6 +257,7 @@ public class DictPanel extends JPanel implements ListSelectionListener,
 
             @Override
             public void stateChanged(ChangeEvent arg0) {
+                sound.SoundPlay.playSoundNonReset("sound/click.wav");
                 tabbedPane.setTitleAt(tabbedPane.getSelectedIndex(), tabMenu[tabbedPane.getSelectedIndex() + 1]);
                 for (int i = 0; i < tabbedPane.getTabCount(); i++) {
                     if (i != tabbedPane.getSelectedIndex()) {
@@ -255,6 +279,7 @@ public class DictPanel extends JPanel implements ListSelectionListener,
 
         panelLeftBot.add(buttonAPI);
         panelLeftBot.add(label1);
+
     }
 
     void addPanelRightTop() {
@@ -305,6 +330,9 @@ public class DictPanel extends JPanel implements ListSelectionListener,
         buttonDelete.setOpaque(true);*/
 
         panelRightTop.add(buttonDelete);
+
+
+
 
         // Button Starred
         buttonStar = new JButton();
@@ -409,15 +437,19 @@ public class DictPanel extends JPanel implements ListSelectionListener,
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(buttonClear)) {
+            sound.SoundPlay.playSoundNonReset("sound/click.wav");
             this.searchBar.setText(null);
         } else if (e.getSource().equals(buttonAdd)) {
+            sound.SoundPlay.playSoundNonReset("sound/click.wav");
             insertWord();
         } else if (e.getSource().equals(buttonEdit)) {
+            sound.SoundPlay.playSoundNonReset("sound/click.wav");
             updateWord(getSelectedWord());
         } else if (e.getSource().equals(buttonDelete)) {
+            sound.SoundPlay.playSoundNonReset("sound/click.wav");
             deleteWordPanel(getSelectedWord());
         } else if (e.getSource().equals(buttonAPI)) {
-
+            sound.SoundPlay.playSoundNonReset("sound/click.wav");
             NewWindow newWindow = new NewWindow();
             Window window = SwingUtilities.getWindowAncestor(this);
 
@@ -444,9 +476,12 @@ public class DictPanel extends JPanel implements ListSelectionListener,
             // } catch (Exception exc) {
             // exc.printStackTrace();
             // }
+
         }*/ else if (e.getSource().equals(buttonSearch)) {
+            sound.SoundPlay.playSoundNonReset("sound/click.wav");
             submitSearch();
         } else if (e.getSource().equals(buttonStar)) {
+            sound.SoundPlay.playSoundNonReset("sound/click.wav");
             String str = getSelectedWord();
             /*if (btnMark.getIcon().equals(IconItem.iconStarred)) {
                 btnMark.setIcon(IconItem.iconStar);
@@ -455,6 +490,24 @@ public class DictPanel extends JPanel implements ListSelectionListener,
                 btnMark.setIcon(IconItem.iconStarred);
                 addToListMark(str);
             }*/
+
+        } else if (e.getSource().equals(buttonSound)) {
+            sound.SoundPlay.playSoundNonReset("sound/click.wav");
+            SpeechText.playSoundGoogleTranslateEnToVi(getSelectedWord());
+        } else if (e.getSource().equals(buttonAudio)) {
+            if (isPlaying) {
+                sound.SoundPlay.playSoundNonReset("sound/click.wav");
+                sound.SoundPlay.playSoundReset("sound/game_audio.wav");
+                buttonAudio.setIcon(iconAudioOn);
+                buttonAudio.setToolTipText("Nhấn vào đây để tắt nhạc");
+            } else {
+                sound.SoundPlay.clip.stop();
+                sound.SoundPlay.clipBack.stop(); // de phong viec back lai trang cu se van phat nhac
+                sound.SoundPlay.playSoundNonReset("sound/click.wav");
+                buttonAudio.setIcon(iconAudioOff);
+                buttonAudio.setToolTipText("Nhấn vào đây để bật nhạc");
+            }
+            isPlaying = !isPlaying;
         }
     }
 
@@ -626,14 +679,14 @@ public class DictPanel extends JPanel implements ListSelectionListener,
             if (getActiveList().getSelectedIndex() == -1) {
                 buttonEdit.setEnabled(false);
                 buttonDelete.setEnabled(false);
-                //btnPronounce.setEnabled(false);
+                buttonSound.setEnabled(false);
                 buttonStar.setEnabled(false);
             } else {
                 showMeaning(listDict, getSelectedWord());
                 //textPane.setText(getSelectedWord());
                 buttonEdit.setEnabled(true);
                 buttonDelete.setEnabled(true);
-                //btnPronounce.setEnabled(true);
+                buttonSound.setEnabled(true);
                 buttonStar.setEnabled(true);
                 //checkMark(getSelectedWord());
             }
