@@ -11,11 +11,29 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 
 public class SpeechText {
-    public static void playSoundGoogleTranslateEnToVi(String text) {
+    public static void playSoundGoogleTranslateEnUKToVi(String text) {
         try {
             String apiText =
                     "https://translate.google.com/translate_tts?ie=UTF-8&tl="
-                            + "en"
+                            + "en-UK"
+                            + "&client=tw-ob&q="
+                            + URLEncoder.encode(text, StandardCharsets.UTF_8);
+            URL url = new URL(apiText);
+            HttpURLConnection connect = (HttpURLConnection) url.openConnection();
+            InputStream voice = connect.getInputStream();
+            new Player(voice).play();
+            connect.disconnect();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println("Voice Error");
+        }
+    }
+
+    public static void playSoundGoogleTranslateEnUSToVi(String text) {
+        try {
+            String apiText =
+                    "https://translate.google.com/translate_tts?ie=UTF-8&tl="
+                            + "en-US"
                             + "&client=tw-ob&q="
                             + URLEncoder.encode(text, StandardCharsets.UTF_8);
             URL url = new URL(apiText);

@@ -31,7 +31,7 @@ public class DictPanel extends JPanel implements ListSelectionListener,
     JPanel panelLeftTop, panelLeftBot, panelRightTop, panelRightBottom;
     JLabel labelLogo, labelSearchBar, labelDescription;
     JFormattedTextField searchBar;
-    JButton buttonSearch, buttonClear, buttonUp, buttonDown, buttonAdd, buttonDelete, buttonEdit, buttonStar,buttonAPI,buttonSound, buttonAudio;
+    JButton buttonSearch, buttonClear, buttonUp, buttonDown, buttonAdd, buttonDelete, buttonEdit, buttonStar,buttonAPI,buttonSoundUK, buttonSoundUS, buttonAudio;
 
     JList<String> listWord, listRecent, listMark;
     JScrollPane scrollPaneWord, scrollPaneRecent, scrollPaneMark;
@@ -174,13 +174,6 @@ public class DictPanel extends JPanel implements ListSelectionListener,
         buttonClear.setToolTipText("Xoá hết");
         panelLeftBot.add(buttonClear);
 
-        //button sound
-        buttonSound = new RoundButton("",25, 25);
-        buttonSound.setBounds(248, 65, 25, 25);
-        buttonSound.addActionListener(this);
-        buttonSound.setIcon(iconSound);
-        buttonSound.setToolTipText("Âm thanh của từ");
-        panelLeftBot.add(buttonSound);
 
         //button audio
         buttonAudio = new RoundButton("",45,45);
@@ -360,6 +353,24 @@ public class DictPanel extends JPanel implements ListSelectionListener,
         labelDescription.setBounds(15, 20, 180, 20);
         panelRightBottom.add(labelDescription);
 
+        //button sound
+        buttonSoundUK = new RoundButton("UK",25, 25);
+        buttonSoundUK.setBounds(290, 20, 80, 30);
+        buttonSoundUK.addActionListener(this);
+        buttonSoundUK.setIcon(iconSound);
+        buttonSoundUK.setToolTipText("Anh-Anh");
+        panelRightBottom.add(buttonSoundUK);
+
+        //button sound
+        buttonSoundUS = new RoundButton("US",25, 25);
+        buttonSoundUS.setBounds(420, 20, 80, 30);
+        buttonSoundUS.addActionListener(this);
+        buttonSoundUS.setIcon(iconSound);
+        buttonSoundUS.setToolTipText("Anh-Mỹ");
+        panelRightBottom.add(buttonSoundUS);
+
+
+
         textPane = new RoundTextPane(20,20);
         //textPane.setLineWrap(true);
         Border border = BorderFactory.createLineBorder(Color.BLUE);
@@ -491,10 +502,14 @@ public class DictPanel extends JPanel implements ListSelectionListener,
                 addToListMark(str);
             }*/
 
-        } else if (e.getSource().equals(buttonSound)) {
+        } else if (e.getSource().equals(buttonSoundUK)) {
             sound.SoundPlay.playSoundNonReset("sound/click.wav");
-            SpeechText.playSoundGoogleTranslateEnToVi(getSelectedWord());
-        } else if (e.getSource().equals(buttonAudio)) {
+            SpeechText.playSoundGoogleTranslateEnUKToVi(getSelectedWord());
+        } else if (e.getSource().equals(buttonSoundUS)) {
+            sound.SoundPlay.playSoundNonReset("sound/click.wav");
+            SpeechText.playSoundGoogleTranslateEnUSToVi(getSelectedWord());
+        }
+        else if (e.getSource().equals(buttonAudio)) {
             if (isPlaying) {
                 sound.SoundPlay.playSoundNonReset("sound/click.wav");
                 sound.SoundPlay.playSoundReset("sound/game_audio.wav");
@@ -679,14 +694,16 @@ public class DictPanel extends JPanel implements ListSelectionListener,
             if (getActiveList().getSelectedIndex() == -1) {
                 buttonEdit.setEnabled(false);
                 buttonDelete.setEnabled(false);
-                buttonSound.setEnabled(false);
+                buttonSoundUS.setEnabled(false);
+                buttonSoundUK.setEnabled(false);
                 buttonStar.setEnabled(false);
             } else {
                 showMeaning(listDict, getSelectedWord());
                 //textPane.setText(getSelectedWord());
                 buttonEdit.setEnabled(true);
                 buttonDelete.setEnabled(true);
-                buttonSound.setEnabled(true);
+                buttonSoundUS.setEnabled(true);
+                buttonSoundUK.setEnabled(true);
                 buttonStar.setEnabled(true);
                 //checkMark(getSelectedWord());
             }

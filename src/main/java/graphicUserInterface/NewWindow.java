@@ -11,7 +11,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import static imageDictionary.imageList.*;
-import static sound.SoundPlay.isPlaying;
 
 
 public class NewWindow extends JFrame implements ActionListener {
@@ -25,12 +24,15 @@ public class NewWindow extends JFrame implements ActionListener {
 
     JTextArea textFieldQues;
     JTextArea textFieldAns;
-    JPanel jPanelTop,jPanelBot;
+    JPanel jPanelTop, jPanelBot;
 
-    boolean engToVie = true;
-    String[] option = {"Tiếng Anh -- English" , "Tiếng Việt -- Vietnamese"};
+    boolean engToVie;
+    String[] option = {"Tiếng Anh -- English", "Tiếng Việt -- Vietnamese"};
     String[] option1 = {"Tiếng Việt -- Vietnamese" , "Tiếng Anh -- English"};
-    JComboBox jComboBox1 , jComboBox2;
+
+    String[] option3 = {"UK", "US", "VIE"};
+    String[] option4 = {"VIE", "UK", "US"};
+    JComboBox jComboBox1 , jComboBox2, jComboBox3, jComboBox4;
 
     public NewWindow() {
         super("Dictionary EV ");            //set title
@@ -118,14 +120,14 @@ public class NewWindow extends JFrame implements ActionListener {
         jPanelBot.add(buttonTrans);
 
         buttonSoundEng = new RoundButton("",30, 30);
-        buttonSoundEng.setBounds(330, 50, 30, 30);
+        buttonSoundEng.setBounds(300, 50, 30, 30);
         buttonSoundEng.addActionListener(this);
         buttonSoundEng.setIcon(iconSound);
         buttonSoundEng.setToolTipText("Âm thanh của đoạn");
         jPanelBot.add(buttonSoundEng);
 
         buttonSoundVie = new RoundButton("",30, 30);
-        buttonSoundVie.setBounds(820, 50, 30, 30);
+        buttonSoundVie.setBounds(790, 50, 30, 30);
         buttonSoundVie.addActionListener(this);
         buttonSoundVie.setIcon(iconSound);
         buttonSoundVie.setToolTipText("Âm thanh của đoạn");
@@ -146,19 +148,21 @@ public class NewWindow extends JFrame implements ActionListener {
 
         jComboBox1 = new JComboBox(option);
         jComboBox2 = new JComboBox(option1);
-
-
+        jComboBox3 = new JComboBox(option3);
+        jComboBox4 = new JComboBox(option4);
 
         jComboBox1.setRenderer(new IconComboBoxRenderer(engIcon, vieIcon));
-        jComboBox2.setRenderer(new IconComboBoxRenderer(vieIcon, engIcon));
-
+        jComboBox2.setRenderer(new IconComboBoxRenderer(engIcon, vieIcon));
 
         jComboBox1.setBounds(30,50,200,30);
         jComboBox2.setBounds(520,50,200,30);
-
+        jComboBox3.setBounds(330,50,45,30);
+        jComboBox4.setBounds(820,50,45,30);
 
         jPanelBot.add(jComboBox1);
         jPanelBot.add(jComboBox2);
+        jPanelBot.add(jComboBox3);
+        jPanelBot.add(jComboBox4);
     }
 
     void checkEngToVie()
@@ -167,16 +171,19 @@ public class NewWindow extends JFrame implements ActionListener {
         {
             engToVie  = true;
         }
-        else if(jComboBox2.getSelectedItem().equals("Tiếng Anh -- English") && jComboBox1.getSelectedItem().equals("Tiếng Việt -- Vietnamese"))
+
+        if(jComboBox2.getSelectedItem().equals("Tiếng Anh -- English") && jComboBox1.getSelectedItem().equals("Tiếng Việt -- Vietnamese"))
         {
             engToVie = false;
         }
+
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource().equals(buttonBack))
         {
+            sound.SoundPlay.playSoundNonReset("sound/click.wav");
             this.dispose();
             Frame newFrame = new Frame();
         }
@@ -184,7 +191,7 @@ public class NewWindow extends JFrame implements ActionListener {
         {
             sound.SoundPlay.playSoundNonReset("sound/click.wav");
             checkEngToVie();
-            if(this.engToVie)
+            if(engToVie)
             {
                 this.textFieldAns.setText(Translator.translateEnToVi(this.textFieldQues.getText()));
             }
@@ -195,27 +202,27 @@ public class NewWindow extends JFrame implements ActionListener {
         }
         if (e.getSource().equals(buttonSoundEng)) {
             sound.SoundPlay.playSoundNonReset("sound/click.wav");
-            checkEngToVie();
-            if(engToVie) {
-                SpeechText.playSoundGoogleTranslateEnToVi(this.textFieldQues.getText());
-            }
-            else {
+            if(jComboBox3.getSelectedItem().equals("UK")) {
+                SpeechText.playSoundGoogleTranslateEnUKToVi(this.textFieldQues.getText());
+            } else if(jComboBox3.getSelectedItem().equals("US")) {
+                SpeechText.playSoundGoogleTranslateEnUSToVi(this.textFieldQues.getText());
+            } else {
                 SpeechText.playSoundGoogleTranslateViToEn(this.textFieldQues.getText());
             }
         }
         if (e.getSource().equals(buttonSoundVie)) {
             sound.SoundPlay.playSoundNonReset("sound/click.wav");
-            checkEngToVie();
-            if(engToVie) {
+            if(jComboBox4.getSelectedItem().equals("UK")) {
+                SpeechText.playSoundGoogleTranslateEnUKToVi(this.textFieldAns.getText());
+            } else if(jComboBox4.getSelectedItem().equals("US")) {
+                SpeechText.playSoundGoogleTranslateEnUSToVi(this.textFieldAns.getText());
+            } else {
                 SpeechText.playSoundGoogleTranslateViToEn(this.textFieldAns.getText());
-            }
-            else {
-                SpeechText.playSoundGoogleTranslateEnToVi(this.textFieldAns.getText());
             }
         }
         if (e.getSource().equals(buttonAudioNW)) {
             sound.SoundPlay.playSoundNonReset("sound/click.wav");
-            if (isPlaying) {
+            if (sound.SoundPlay.isPlaying) {
                 sound.SoundPlay.playSoundNonReset("sound/click.wav");
                 sound.SoundPlay.playSoundReset("sound/game_audio.wav");
                 buttonAudioNW.setIcon(iconAudioOn);
@@ -227,7 +234,7 @@ public class NewWindow extends JFrame implements ActionListener {
                 buttonAudioNW.setIcon(iconAudioOff);
                 buttonAudioNW.setToolTipText("Nhấn vào đây để bật nhạc");
             }
-            isPlaying = !isPlaying;
+            sound.SoundPlay.isPlaying = !sound.SoundPlay.isPlaying;
         }
     }
 

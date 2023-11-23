@@ -19,6 +19,7 @@ public class imageList {
     public static final ImageIcon bg4 = new ImageIcon("src/main/java/UI/4.jpg");
     public static final ImageIcon engIcon = new ImageIcon("src/main/java/UI/england.jpg");
     public static final ImageIcon vieIcon = new ImageIcon("src/main/java/UI/viet.jpg");
+    public static final ImageIcon usaIcon = new ImageIcon("src/main/java/UI/usa.png");
     public static final ImageIcon iconSound = new ImageIcon("src/main/java/UI/sound.png");
     public static final ImageIcon iconAudioOff = new ImageIcon("src/main/java/UI/iconAudioOff.png");
     public static final ImageIcon iconAudioOn = new ImageIcon("src/main/java/UI/iconAudioOn.png");
