@@ -17,7 +17,7 @@ import static imageDictionary.imageList.*;
 
 public class Menu extends JFrame implements ActionListener {
 
-    JButton buttonDictPanel, buttonNW, buttonGame, buttonQuiz, buttonSetting, buttonExit;
+    JButton buttonDictPanel, buttonNW, buttonGame, buttonQuiz, buttonSetting, buttonExit, buttonAudio;
 
     JPanel jPanelRight, jPanelLeft;
 
@@ -109,6 +109,19 @@ public class Menu extends JFrame implements ActionListener {
         buttonExit.setToolTipText("Thoát");
         jPanelRight.add(buttonExit);
 
+        buttonAudio = new RoundButton("",45,45);
+        buttonAudio.setBounds(10, 0, 25, 25);
+        buttonAudio.addActionListener(this);
+        if (Setting.isPlaying) {
+            buttonAudio.setIcon(iconAudioOff);
+            buttonAudio.setToolTipText("Nhấn vào đây để bật nhạc");
+        }
+        else {
+            buttonAudio.setIcon(iconAudioOn);
+            buttonAudio.setToolTipText("Nhấn vào đây để tắt nhạc");
+        }
+        jPanelRight.add(buttonAudio);
+
 
     }
 
@@ -131,6 +144,24 @@ public class Menu extends JFrame implements ActionListener {
         if(e.getSource().equals(buttonExit)) {
             sound.SoundPlay.playSoundNonReset("sound/click.wav");
             this.dispose();
+        }
+        if(e.getSource().equals(buttonAudio)) {
+            sound.SoundPlay.playSoundNonReset("sound/click.wav");
+            if (Setting.isPlaying) {
+                sound.SoundPlay.playSoundNonReset("sound/click.wav");
+                Setting.chooseMusic();
+                sound.SoundPlay.playSoundReset(Setting.soundFile);
+                sound.SoundPlay.setVolume(Setting.savedValue);
+                buttonAudio.setIcon(iconAudioOn);
+                buttonAudio.setToolTipText("Nhấn vào đây để tắt nhạc");
+            } else {
+                sound.SoundPlay.clip.stop();
+                sound.SoundPlay.clipBack.stop(); // de phong viec back lai trang cu se van phat nhac
+                sound.SoundPlay.playSoundNonReset("sound/click.wav");
+                buttonAudio.setIcon(iconAudioOff);
+                buttonAudio.setToolTipText("Nhấn vào đây để bật nhạc");
+            }
+            Setting.isPlaying = !Setting.isPlaying;
         }
     }
 

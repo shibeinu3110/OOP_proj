@@ -22,7 +22,7 @@ public class imageList {
     public static final ImageIcon iconSound = new ImageIcon("src/main/java/UI/sound.png");
     public static final ImageIcon iconAudioOff = new ImageIcon("src/main/java/UI/iconAudioOff.png");
     public static final ImageIcon iconAudioOn = new ImageIcon("src/main/java/UI/iconAudioOn.png");
-    public static final ImageIcon iconPractice = new ImageIcon("src/main/java/UI/practice.png");
     public static final ImageIcon iconGame = new ImageIcon("src/main/java/UI/game.png");
     public static final ImageIcon iconSetting = new ImageIcon("src/main/java/UI/setting.png");
+    public static final ImageIcon iconChoose = new ImageIcon("src/main/java/UI/choose.png");
 }

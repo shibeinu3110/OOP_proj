@@ -9,7 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
-
+import javax.swing.JOptionPane;
 
 import static imageDictionary.imageList.*;
 
@@ -107,15 +107,10 @@ public class Setting extends JFrame implements ActionListener {
         jPanelBot.add(buttonBack);
 
         buttonAudio = new RoundButton("",25,25);
-        buttonAudio.setBounds(750, 50, 25, 25);
+        buttonAudio.setBounds(750, 55, 23, 23);
         buttonAudio.addActionListener(this);
-        if (isPlaying) {
-            buttonAudio.setIcon(iconAudioOff);
-            buttonAudio.setToolTipText("Nhấn vào đây để bật nhạc");
-        } else {
-            buttonAudio.setIcon(iconAudioOn);
-            buttonAudio.setToolTipText("Nhấn vào đây để tắt nhạc");
-        }
+        buttonAudio.setIcon(iconChoose);
+        buttonAudio.setToolTipText("Chọn");
         jPanelBot.add(buttonAudio);
 
         if (soundFile.equals("sound/game_audio1.wav")) {
@@ -152,10 +147,35 @@ public class Setting extends JFrame implements ActionListener {
         }
         if (e.getSource().equals(buttonAudio)) {
             sound.SoundPlay.playSoundNonReset("sound/click.wav");
-            sound.SoundPlay.clip.stop();
-            sound.SoundPlay.clipBack.stop();
+            String temp = soundFile;
             Setting.chooseMusic();
-            sound.SoundPlay.playSoundReset(soundFile);
+            if(soundFile.equals(temp)) {
+                int choice = JOptionPane.showConfirmDialog(null,
+                        "Bạn đang sử dụng nhạc này", "Xác nhận", JOptionPane.DEFAULT_OPTION);
+                if (choice == JOptionPane.YES_OPTION) {
+                    sound.SoundPlay.playSoundNonReset("sound/click.wav");
+                } else {
+                    sound.SoundPlay.playSoundNonReset("sound/click.wav");
+                }
+            } else {
+                int choice = JOptionPane.showConfirmDialog(null,
+                        "Bạn có muốn đổi nhạc?", "Xác nhận", JOptionPane.YES_NO_OPTION);
+                if (choice == JOptionPane.YES_OPTION) {
+                    if (!isPlaying) {
+                        sound.SoundPlay.playSoundNonReset("sound/click.wav");
+                        sound.SoundPlay.clip.stop();
+                        sound.SoundPlay.clipBack.stop();
+                        sound.SoundPlay.playSoundReset(soundFile);
+                        sound.SoundPlay.setVolume(Setting.savedValue);
+                    } else {
+                        sound.SoundPlay.playSoundNonReset("sound/click.wav");
+                    }
+                }
+                else {
+                    sound.SoundPlay.playSoundNonReset("sound/click.wav");
+                    soundFile = temp;
+                }
+            }
         }
     }
 
