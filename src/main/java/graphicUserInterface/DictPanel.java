@@ -5,6 +5,7 @@ import connectData.WordDAO;
 import model.DictionaryManagement;
 import model.Word;
 import API.SpeechText;
+import sound.SoundPlay;
 
 
 import javax.swing.*;
@@ -17,7 +18,7 @@ import java.util.ArrayList;
 
 import static imageDictionary.imageList.*;
 import static imageDictionary.imageList.iconSound;
-import static sound.SoundPlay.isPlaying;
+
 
 public class DictPanel extends JFrame implements ListSelectionListener,
         DocumentListener,
@@ -31,7 +32,7 @@ public class DictPanel extends JFrame implements ListSelectionListener,
     JPanel panelLeftTop, panelLeftBot, panelRightTop, panelRightBottom;
     JLabel labelLogo, labelSearchBar, labelDescription;
     JFormattedTextField searchBar;
-    JButton buttonSearch, buttonClear, buttonUp, buttonDown, buttonAdd, buttonDelete, buttonEdit, buttonStar,buttonAPI,buttonSoundUK, buttonSoundUS, buttonAudio, buttonBack;
+    JButton buttonSearch, buttonClear, buttonUp, buttonDown, buttonAdd, buttonDelete, buttonEdit, buttonStar,buttonAPI,buttonSoundUK, buttonSoundUS, buttonBack;
 
     JList<String> listWord, listRecent, listMark;
     JScrollPane scrollPaneWord, scrollPaneRecent, scrollPaneMark;
@@ -194,20 +195,6 @@ public class DictPanel extends JFrame implements ListSelectionListener,
         buttonClear.setToolTipText("Xoá hết");
         panelLeftBot.add(buttonClear);
 
-
-        //button audio
-        buttonAudio = new RoundButton("",45,45);
-        buttonAudio.setBounds(10, 0, 25, 25);
-        buttonAudio.addActionListener(this);
-        if (isPlaying) {
-            buttonAudio.setIcon(iconAudioOff);
-            buttonAudio.setToolTipText("Nhấn vào đây để bật nhạc");
-        }
-        else {
-            buttonAudio.setIcon(iconAudioOn);
-            buttonAudio.setToolTipText("Nhấn vào đây để tắt nhạc");
-        }
-        panelLeftBot.add(buttonAudio);
 
 
 
@@ -531,21 +518,6 @@ public class DictPanel extends JFrame implements ListSelectionListener,
         } else if (e.getSource().equals(buttonSoundUS)) {
             sound.SoundPlay.playSoundNonReset("sound/click.wav");
             SpeechText.playSoundGoogleTranslateEnUSToVi(getSelectedWord());
-        }
-        else if (e.getSource().equals(buttonAudio)) {
-            if (isPlaying) {
-                sound.SoundPlay.playSoundNonReset("sound/click.wav");
-                sound.SoundPlay.playSoundReset("sound/game_audio.wav");
-                buttonAudio.setIcon(iconAudioOn);
-                buttonAudio.setToolTipText("Nhấn vào đây để tắt nhạc");
-            } else {
-                sound.SoundPlay.clip.stop();
-                sound.SoundPlay.clipBack.stop(); // de phong viec back lai trang cu se van phat nhac
-                sound.SoundPlay.playSoundNonReset("sound/click.wav");
-                buttonAudio.setIcon(iconAudioOff);
-                buttonAudio.setToolTipText("Nhấn vào đây để bật nhạc");
-            }
-            isPlaying = !isPlaying;
         }
     }
 

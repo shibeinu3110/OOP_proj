@@ -4,10 +4,12 @@ package org.example;
 // then press Enter. You can now see whitespace characters in your code.
 import connectData.WordDAO;
 import graphicUserInterface.DictFinish;
+import graphicUserInterface.Setting;
 import model.Word;
 
 import javax.swing.*;
 import java.util.ArrayList;
+
 
 public class Main
 {
