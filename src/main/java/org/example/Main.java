@@ -20,6 +20,8 @@ public class Main
                                       @Override
                                       public void run() {
                                           DictFinish dictFinish = new DictFinish();
+                                          sound.SoundPlay.playSoundReset(Setting.soundFile);
+                                          sound.SoundPlay.setVolume(Setting.savedValue);
                                       }
                                   }
         );

@@ -21,7 +21,7 @@ public class Setting extends JFrame implements ActionListener {
 
     JLabel labelMusicBar, labelVolumeBar;
 
-    static boolean isPlaying = true;
+    static boolean isPlaying = false;
 
     String[] option = {"Music Song 1", "Music Song 2", "Music Song 3", "Music Song 4"};
     String[] option1 = {"Music Song 2", "Music Song 1", "Music Song 3", "Music Song 4"};
@@ -151,21 +151,11 @@ public class Setting extends JFrame implements ActionListener {
             DictFinish dictFinish = new DictFinish();
         }
         if (e.getSource().equals(buttonAudio)) {
-            if (isPlaying) {
-                sound.SoundPlay.playSoundNonReset("sound/click.wav");
-                chooseMusic();
-                sound.SoundPlay.playSoundReset(soundFile);
-                sound.SoundPlay.setVolume(savedValue);
-                buttonAudio.setIcon(iconAudioOn);
-                buttonAudio.setToolTipText("Nhấn vào đây để tắt nhạc");
-            } else {
-                sound.SoundPlay.clip.stop();
-                sound.SoundPlay.clipBack.stop();
-                sound.SoundPlay.playSoundNonReset("sound/click.wav");
-                buttonAudio.setIcon(iconAudioOff);
-                buttonAudio.setToolTipText("Nhấn vào đây để bật nhạc");
-            }
-            isPlaying = !isPlaying;
+            sound.SoundPlay.playSoundNonReset("sound/click.wav");
+            sound.SoundPlay.clip.stop();
+            sound.SoundPlay.clipBack.stop();
+            Setting.chooseMusic();
+            sound.SoundPlay.playSoundReset(soundFile);
         }
     }
 

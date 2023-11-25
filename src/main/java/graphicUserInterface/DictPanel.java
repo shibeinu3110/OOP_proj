@@ -32,7 +32,7 @@ public class DictPanel extends JFrame implements ListSelectionListener,
     JPanel panelLeftTop, panelLeftBot, panelRightTop, panelRightBottom;
     JLabel labelLogo, labelSearchBar, labelDescription;
     JFormattedTextField searchBar;
-    JButton buttonSearch, buttonClear, buttonUp, buttonDown, buttonAdd, buttonDelete, buttonEdit, buttonStar,buttonAPI,buttonSoundUK, buttonSoundUS, buttonBack;
+    JButton buttonSearch, buttonClear, buttonUp, buttonDown, buttonAdd, buttonDelete, buttonEdit, buttonStar,buttonAudio,buttonSoundUK, buttonSoundUS, buttonBack;
 
     JList<String> listWord, listRecent, listMark;
     JScrollPane scrollPaneWord, scrollPaneRecent, scrollPaneMark;
@@ -196,7 +196,18 @@ public class DictPanel extends JFrame implements ListSelectionListener,
         panelLeftBot.add(buttonClear);
 
 
-
+        buttonAudio = new RoundButton("",45,45);
+        buttonAudio.setBounds(10, 0, 25, 25);
+        buttonAudio.addActionListener(this);
+        if (Setting.isPlaying) {
+            buttonAudio.setIcon(iconAudioOff);
+            buttonAudio.setToolTipText("Nhấn vào đây để bật nhạc");
+        }
+        else {
+            buttonAudio.setIcon(iconAudioOn);
+            buttonAudio.setToolTipText("Nhấn vào đây để tắt nhạc");
+        }
+        panelLeftBot.add(buttonAudio);
 
         /**create prepared list*/
 
@@ -518,6 +529,22 @@ public class DictPanel extends JFrame implements ListSelectionListener,
         } else if (e.getSource().equals(buttonSoundUS)) {
             sound.SoundPlay.playSoundNonReset("sound/click.wav");
             SpeechText.playSoundGoogleTranslateEnUSToVi(getSelectedWord());
+        } else if (e.getSource().equals(buttonAudio)) {
+            if (Setting.isPlaying) {
+                sound.SoundPlay.playSoundNonReset("sound/click.wav");
+                Setting.chooseMusic();
+                sound.SoundPlay.playSoundReset(Setting.soundFile);
+                sound.SoundPlay.setVolume(Setting.savedValue);
+                buttonAudio.setIcon(iconAudioOn);
+                buttonAudio.setToolTipText("Nhấn vào đây để tắt nhạc");
+            } else {
+                sound.SoundPlay.clip.stop();
+                sound.SoundPlay.clipBack.stop(); // de phong viec back lai trang cu se van phat nhac
+                sound.SoundPlay.playSoundNonReset("sound/click.wav");
+                buttonAudio.setIcon(iconAudioOff);
+                buttonAudio.setToolTipText("Nhấn vào đây để bật nhạc");
+            }
+            Setting.isPlaying = !Setting.isPlaying;
         }
     }
 

@@ -21,7 +21,7 @@ public class NewWindow extends JFrame implements ActionListener {
     //public long end = Calendar.getInstance().getTimeInMillis(); //Timer
 
     //protected JSplitPane split;
-    JButton buttonBack , buttonTrans, buttonSoundEng, buttonSoundVie;
+    JButton buttonBack , buttonTrans, buttonSoundEng, buttonSoundVie, buttonAudio;
 
     JTextArea textFieldQues;
     JTextArea textFieldAns;
@@ -134,6 +134,17 @@ public class NewWindow extends JFrame implements ActionListener {
         buttonSoundVie.setToolTipText("Âm thanh của đoạn");
         jPanelBot.add(buttonSoundVie);
 
+        buttonAudio = new RoundButton("",25,25);
+        buttonAudio.setBounds(10, 5, 25, 25);
+        buttonAudio.addActionListener(this);
+        if (Setting.isPlaying) {
+            buttonAudio.setIcon(iconAudioOff);
+            buttonAudio.setToolTipText("Nhấn vào đây để bật nhạc");
+        } else {
+            buttonAudio.setIcon(iconAudioOn);
+            buttonAudio.setToolTipText("Nhấn vào đây để tắt nhạc");
+        }
+        jPanelBot.add(buttonAudio);
 
 
         jComboBox1 = new JComboBox(option);
@@ -209,6 +220,24 @@ public class NewWindow extends JFrame implements ActionListener {
             } else {
                 SpeechText.playSoundGoogleTranslateViToEn(this.textFieldAns.getText());
             }
+        }
+        if (e.getSource().equals(buttonAudio)) {
+            sound.SoundPlay.playSoundNonReset("sound/click.wav");
+            if (Setting.isPlaying) {
+                sound.SoundPlay.playSoundNonReset("sound/click.wav");
+                Setting.chooseMusic();
+                sound.SoundPlay.playSoundReset(Setting.soundFile);
+                sound.SoundPlay.setVolume(Setting.savedValue);
+                buttonAudio.setIcon(iconAudioOn);
+                buttonAudio.setToolTipText("Nhấn vào đây để tắt nhạc");
+            } else {
+                sound.SoundPlay.clip.stop();
+                sound.SoundPlay.clipBack.stop(); // de phong viec back lai trang cu se van phat nhac
+                sound.SoundPlay.playSoundNonReset("sound/click.wav");
+                buttonAudio.setIcon(iconAudioOff);
+                buttonAudio.setToolTipText("Nhấn vào đây để bật nhạc");
+            }
+            Setting.isPlaying = !Setting.isPlaying;
         }
     }
 
