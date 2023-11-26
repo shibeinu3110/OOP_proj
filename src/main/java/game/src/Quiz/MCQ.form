@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="game.src.Quiz.MCQ">
+  <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="666" height="431"/>
+    </constraints>
+    <properties>
+      <background color="-3347171"/>
+      <foreground color="-1050181"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <grid id="783e5" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints border-constraint="Center"/>
+        <properties>
+          <background color="-15442528"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <grid id="4ec7d" layout-manager="GridLayoutManager" row-count="1" column-count="4" same-size-horizontally="true" same-size-vertically="false" hgap="5" vgap="-1">
+            <margin top="0" left="5" bottom="5" right="5"/>
+            <constraints border-constraint="South"/>
+            <properties>
+              <background color="-15442528"/>
+              <enabled value="true"/>
+              <foreground color="-1"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="9a41e" class="javax.swing.JButton" binding="bButton">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="220" height="200"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-1050181"/>
+                  <borderPainted value="true"/>
+                  <enabled value="true"/>
+                  <font size="14"/>
+                  <text value=""/>
+                </properties>
+              </component>
+              <component id="54f27" class="javax.swing.JButton" binding="cButton" default-binding="true">
+                <constraints>
+                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="220" height="200"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-1050181"/>
+                  <font size="14"/>
+                  <text value=""/>
+                </properties>
+              </component>
+              <component id="6b7ad" class="javax.swing.JButton" binding="dButton">
+                <constraints>
+                  <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="220" height="200"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-1050181"/>
+                  <enabled value="true"/>
+                  <font size="14"/>
+                  <text value=""/>
+                </properties>
+              </component>
+              <component id="f0940" class="javax.swing.JButton" binding="aButton">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="220" height="200"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-1050181"/>
+                  <contentAreaFilled value="true"/>
+                  <font size="14"/>
+                  <text value=""/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <component id="938e0" class="javax.swing.JLabel" binding="questionLabel">
+            <constraints border-constraint="Center"/>
+            <properties>
+              <background color="-9469679"/>
+              <font size="20" style="1"/>
+              <foreground color="-2104859"/>
+              <horizontalAlignment value="0"/>
+              <horizontalTextPosition value="0"/>
+              <text value=""/>
+            </properties>
+          </component>
+          <grid id="6d0b8" layout-manager="BorderLayout" hgap="0" vgap="0">
+            <constraints border-constraint="North"/>
+            <properties>
+              <background color="-5122848"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="9f289" class="javax.swing.JLabel" binding="Score">
+                <constraints border-constraint="East"/>
+                <properties>
+                  <font size="14"/>
+                  <text value="Label"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+        </children>
+      </grid>
+      <grid id="edf2b" binding="resultPanel" layout-manager="BorderLayout" hgap="0" vgap="1">
+        <constraints border-constraint="South"/>
+        <properties>
+          <background color="-16716515"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="de6e5" class="javax.swing.JLabel" binding="resultText">
+            <constraints border-constraint="West"/>
+            <properties>
+              <font size="14"/>
+              <text value="Label"/>
+            </properties>
+          </component>
+          <component id="9a11a" class="javax.swing.JButton" binding="NEXTButton" default-binding="true">
+            <constraints border-constraint="East"/>
+            <properties>
+              <text value="NEXT"/>
+            </properties>
+          </component>
+          <grid id="26a85" layout-manager="BorderLayout" hgap="0" vgap="0">
+            <constraints border-constraint="South"/>
+            <properties>
+              <background color="-15979192"/>
+              <foreground color="-720897"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="9662c" class="javax.swing.JButton" binding="RESTARTButton" default-binding="true">
+                <constraints border-constraint="East"/>
+                <properties>
+                  <text value="RESTART"/>
+                </properties>
+              </component>
+              <component id="fd13e" class="javax.swing.JLabel" binding="finalScoreText">
+                <constraints border-constraint="West"/>
+                <properties>
+                  <font size="14" style="1"/>
+                  <foreground color="-2104859"/>
+                  <text value="Label"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>

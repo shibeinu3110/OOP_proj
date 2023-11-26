@@ -1,0 +1,960 @@
+﻿What is the meaning of "happy"?
+A. Vui vẻ
+B. Buồn
+C. Mệt mỏi
+D. Tức giận
+A
+What is the meaning of "sad"?
+A. Vui vẻ
+B. Buồn
+C. Mệt mỏi
+D. Tức giận
+B
+What is the meaning of "beautiful"?
+A. Xấu
+B. Xinh đẹp
+C. Tuyệt vời
+D. Hạnh phúc
+B
+What is the meaning of "ugly"?
+A. Xấu
+B. Xinh đẹp
+C. Tuyệt vời
+D. Hạnh phúc
+A
+What is the meaning of "small"?
+A. Nhỏ
+B. Lớn
+C. To
+D. Khổng lồ
+A
+What is the meaning of "old"?
+A. Trẻ
+B. Già
+C. Xấu
+D. Đẹp
+B
+What is the meaning of "young"?
+A. Trẻ
+B. Già
+C. Đáng yêu
+D. Nhỏ bé
+A
+What is the meaning of "dog"?
+A. Con chó
+B. Con mèo
+C. Con chim
+D. Con cá
+A
+What is the meaning of "cat"?
+A. Con chó
+B. Con mèo
+C. Con chim
+D. Con cá
+B
+What is the meaning of "bird"?
+A. Con chó
+B. Con mèo
+C. Con chim
+D. Con cá
+C
+What is the meaning of "fish"?
+A. Con chó
+B. Con mèo
+C. Con chim
+D. Con cá
+D
+What is the meaning of "book"?
+A. Quyển sách
+B. Chiếc bút
+C. Chiếc bút chì
+D. Cái ghế
+A
+What is the meaning of "pen"?
+A. Quyển sách
+B. Chiếc bút
+C. Chiếc bút chì
+D. Cái ghế
+B
+What is the meaning of "pencil"?
+A. Quyển sách
+B. Chiếc bút
+C. Chiếc bút chì
+D. Cái ghế
+C
+What is the meaning of "chair"?
+A. Quyển sách
+B. Chiếc bút
+C. Chiếc bút chì
+D. Cái ghế
+D
+What is the meaning of "eat"?
+A. Uống
+B. Ngủ
+C. Làm việc
+D. Ăn
+D
+What is the meaning of "drink"?
+A. Uống
+B. Ngủ
+C. Làm việc
+D. Ăn
+A
+What is the meaning of "sleep"?
+A. Uống
+B. Ngủ
+C. Làm việc
+D. Ăn
+B
+What is the meaning of "work"?
+A. Uống
+B. Ngủ
+C. Làm việc
+D. Ăn
+C
+What is the meaning of "happy"?
+A. Vui vẻ
+B. Buồn
+C. Mệt mỏi
+D. Tức giận
+A
+What is the meaning of "conscience"?
+A. Ý thức
+B. Lương tâm
+C. Lòng trắc ẩn
+D. Cảm xúc
+B
+What is the meaning of "philosophy"?
+A. Triết học
+B. Khoa học
+C. Nghệ thuật
+D. Tôn giáo
+A
+What is the meaning of "literature"?
+A. Văn học
+B. Ngôn ngữ
+C. Văn hóa
+D. Nghệ thuật
+A
+What is the meaning of "history"?
+A. Lịch sử
+B. Thời gian
+C. Sự kiện
+D. Quá khứ
+A
+What is the meaning of "art"?
+A. Nghệ thuật
+B. Sáng tạo
+C. Tính thẩm mỹ
+D. Cảm xúc
+A
+What is the meaning of "science"?
+A. Khoa học
+B. Kiến thức
+C. Sự hiểu biết
+D. Sự thật
+A
+What is the meaning of "religion"?
+A. Tôn giáo
+B. Niềm tin
+C. Lòng tin
+D. Thần thánh
+A
+What is the meaning of "democracy"?
+A. Dân chủ
+B. Tự do
+C. Bình đẳng
+D. Công bằng
+A
+What is the meaning of "abstract"?
+A. Tóm tắt
+B. Trừu tượng
+C. Cụ thể
+D. Tổng quát
+B
+What is the meaning of "confusion"?
+A. Nhầm lẫn
+B. Mất phương hướng
+C. Mù mịt
+D. Tối tăm
+A
+What is the meaning of "paradox"?
+A. Nghịch lý
+B. Tự mâu thuẫn
+C. Ngược đời
+D. Trái ngược
+A
+What is the meaning of "subconscious"?
+A. Bất tỉnh
+B. Vô thức
+C. Ngủ
+D. Mơ
+B
+What is the meaning of "existentialism"?
+A. Triết học hiện sinh
+B. Triết học hiện đại
+C. Triết học phương Tây
+D. Triết học duy tâm
+A
+What is the meaning of "nihilism"?
+A. Vô nghĩa luận
+B. Bất khả tri luận
+C. Nhị nguyên luận
+D. Duy vật luận
+A
+What is the meaning of "precedent"?
+A. Tiền lệ
+B. Hệ thống
+C. Quy luật
+D. Nguyên tắc
+A
+What is the meaning of "consequence"?
+A. Hậu quả
+B. Nguyên nhân
+C. Kết quả
+D. Nguyên tắc
+A
+What is the meaning of "hypothetical"?
+A. Giả thuyết
+B. Thuyết âm mưu
+C. Lập luận
+D. Nguyên tắc
+A
+What is the meaning of "synonymous"?
+A. Đồng nghĩa
+B. Trái nghĩa
+C. Lập luận
+D. Nguyên tắc
+A
+What is the meaning of "ambiguous"?
+A. Mập mờ
+B. Rõ ràng
+C. Lập luận
+D. Nguyên tắc
+A
+What is the meaning of "figurative"?
+A. Biểu tượng
+B. Hình ảnh
+C. Lập luận
+D. Nguyên tắc
+A
+What is the meaning of "go"?
+A. Đi
+B. Có
+C. Muốn
+D. Có thể
+A
+What is the meaning of "see"?
+A. Nhìn
+B. Có
+C. Muốn
+D. Có thể
+A
+What is the meaning of "hear"?
+A. Nghe
+B. Có
+C. Muốn
+D. Có thể
+A
+What is the meaning of "think"?
+A. Suy nghĩ
+B. Có
+C. Muốn
+D. Có thể
+A
+What is the meaning of "feel"?
+A. Cảm thấy
+B. Có
+C. Muốn
+D. Có thể
+A
+What is the meaning of "want"?
+A. Muốn
+B. Có
+C. Là
+D. Có thể
+A
+What is the meaning of "important"?
+A. Quan trọng
+B. Không quan trọng
+C. Tầm thường
+D. Nhỏ nhặt
+A
+What is the meaning of "necessary"?
+A. Cần thiết
+B. Không cần thiết
+C. Tùy chọn
+D. Tùy tiện
+A
+What is the meaning of "success"?
+A. Thành công
+B. Thất bại
+C. Nỗ lực
+D. Khó khăn
+A
+What is the meaning of "failure"?
+A. Thành công
+B. Thất bại
+C. Nỗ lực
+D. Khó khăn
+B
+What is the meaning of "opportunity"?
+A. Cơ hội
+B. Thách thức
+C. Khó khăn
+D. Rủi ro
+A
+What is the meaning of "challenge"?
+A. Cơ hội
+B. Thách thức
+C. Khó khăn
+D. Rủi ro
+B
+What is the meaning of "difficulty"?
+A. Dễ dàng
+B. Khó khăn
+C. Nỗ lực
+D. Khả năng
+B
+What is the meaning of "ability"?
+A. Dễ dàng
+B. Khó khăn
+C. Nỗ lực
+D. Khả năng
+D
+What is the meaning of "skill"?
+A. Khả năng
+B. Kỹ năng
+C. Năng lực
+D. Sức mạnh
+B
+What is the meaning of "power"?
+A. Khả năng
+B. Kỹ năng
+C. Năng lực
+D. Sức mạnh
+D
+"Con chó" trong tiếng Anh là gì?
+A. Cat
+B. Dog
+C. Rabbit
+D. Mouse
+B
+"Con mèo" trong tiếng Anh là gì?
+A. Dog
+B. Cat
+C. Rabbit
+D. Mouse
+B
+"Con gà" trong tiếng Anh là gì?
+A. Chicken
+B. Dog
+C. Rabbit
+D. Mouse
+A
+"Con bò" trong tiếng Anh là gì?
+A. Cow
+B. Dog
+C. Rabbit
+D. Mouse
+A
+"Con ngựa" trong tiếng Anh là gì?
+A. Horse
+B. Dog
+C. Rabbit
+D. Mouse
+A
+"Con lợn" trong tiếng Anh là gì?
+A. Pig
+B. Dog
+C. Rabbit
+D. Mouse
+A
+"Con trâu" trong tiếng Anh là gì?
+A. Buffalo
+B. Dog
+C. Rabbit
+D. Mouse
+A
+"Con dê" trong tiếng Anh là gì?
+A. Goat
+B. Dog
+C. Rabbit
+D. Mouse
+A
+"Con thỏ" trong tiếng Anh là gì?
+A. Rabbit
+B. Dog
+C. Cat
+D. Mouse
+A
+"Con chuột" trong tiếng Anh là gì?
+A. Mouse
+B. Dog
+C. Cat
+D. Rabbit
+A
+"Đồ ăn" trong tiếng Anh là gì?
+A. Food
+B. Drink
+C. Meal
+D. Restaurant
+A
+"Cơm" trong tiếng Anh là gì?
+A. Rice
+B. Noodle
+C. Bread
+D. Soup
+A
+"Thịt" trong tiếng Anh là gì?
+A. Meat
+B. Fish
+C. Chicken
+D. Egg
+A
+"Cá" trong tiếng Anh là gì?
+A. Meat
+B. Fish
+C. Chicken
+D. Egg
+B
+"Gà" trong tiếng Anh là gì?
+A. Chicken
+B. Meat
+C. Fish
+D. Egg
+A
+"Trứng" trong tiếng Anh là gì?
+A. Meat
+B. Fish
+C. Chicken
+D. Egg
+D
+"Đồ uống" trong tiếng Anh là gì?
+A. Food
+B. Drink
+C. Meal
+D. Restaurant
+B
+"Cà phê" trong tiếng Anh là gì?
+A. Coffee
+B. Tea
+C. Milk
+D. Water
+A
+"Trà" trong tiếng Anh là gì?
+A. Coffee
+B. Tea
+C. Milk
+D. Water
+B
+"Sữa" trong tiếng Anh là gì?
+A. Coffee
+B. Tea
+C. Milk
+D. Water
+C
+"Nước" trong tiếng Anh là gì?
+A. Coffee
+B. Tea
+C. Milk
+D. Water
+D
+"Trời nắng" trong tiếng Anh là gì?
+A. Sunny
+B. Cloudy
+C. Rainy
+D. Snowy
+A
+"Trời mưa" trong tiếng Anh là gì?
+A. Sunny
+B. Cloudy
+C. Rainy
+D. Snowy
+C
+"Trời nhiều mây" trong tiếng Anh là gì?
+A. Sunny
+B. Cloudy
+C. Rainy
+D. Snowy
+B
+"Trời có tuyết rơi" trong tiếng Anh là gì?
+A. Sunny
+B. Cloudy
+C. Rainy
+D. Snowy
+D
+"Trời lạnh" trong tiếng Anh là gì?
+A. Cold
+B. Hot
+C. Warm
+D. Temperate
+A
+"Trời nóng" trong tiếng Anh là gì?
+A. Cold
+B. Hot
+C. Warm
+D. Temperate
+B
+"Trời ấm" trong tiếng Anh là gì?
+A. Cold
+B. Hot
+C. Warm
+D. Temperate
+C
+"Trời mát" trong tiếng Anh là gì?
+A. Cold
+B. Hot
+C. Warm
+D. Temperate
+D
+"Đỏ" trong tiếng Anh là gì?
+A. Red
+B. Blue
+C. Green
+D. Yellow
+A
+"Xanh dương" trong tiếng Anh là gì?
+A. Red
+B. Blue
+C. Green
+D. Yellow
+B
+"Xanh lá cây" trong tiếng Anh là gì?
+A. Red
+B. Blue
+C. Green
+D. Yellow
+C
+"Vàng" trong tiếng Anh là gì?
+A. Red
+B. Blue
+C. Green
+D. Yellow
+D
+"Tím" trong tiếng Anh là gì?
+A. Red
+B. Blue
+C. Green
+D. Purple
+D
+"Nâu" trong tiếng Anh là gì?
+A. Red
+B. Blue
+C. Green
+D. Brown
+D
+"Đen" trong tiếng Anh là gì?
+A. Red
+B. Blue
+C. Green
+D. Black
+D
+"Trắng" trong tiếng Anh là gì?
+A. Red
+B. Blue
+C. Green
+D. White
+D
+"Buổi sáng" trong tiếng Anh là gì?
+A. Morning
+B. Afternoon
+C. Evening
+D. Night
+A
+"Buổi chiều" trong tiếng Anh là gì?
+A. Morning
+B. Afternoon
+C. Evening
+D. Night
+B
+"Cháo" trong tiếng Anh là gì?
+A. Soup
+B. Stew
+C. Curry
+D. Porridge
+D
+"Mưa phùn" trong tiếng Anh là gì?
+A. Drizzle
+B. Downpour
+C. Shower
+D. Snow
+A
+"Mưa đá" trong tiếng Anh là gì?
+A. Drizzle
+B. Downpour
+C. Shower
+D. Hail
+D
+"Mây mù" trong tiếng Anh là gì?
+A. Fog
+B. Cloud
+C. Mist
+D. Smog
+A
+"Gió bão" trong tiếng Anh là gì?
+A. Storm
+B. Tornado
+C. Hurricane
+D. Typhoon
+A
+"Sóng thần" trong tiếng Anh là gì?
+A. Storm
+B. Tornado
+C. Hurricane
+D. Tsunami
+D
+"Khí hậu" trong tiếng Anh là gì?
+A. Climate
+B. Weather
+C. Storm
+D. Tornado
+A
+"Thời tiết" trong tiếng Anh là gì?
+A. Climate
+B. Weather
+C. Storm
+D. Tornado
+B
+"Cam" trong tiếng Anh là gì?
+A. Red
+B. Orange
+C. Yellow
+D. Brown
+B
+"Hồng" trong tiếng Anh là gì?
+A. Red
+B. Orange
+C. Yellow
+D. Pink
+D
+"Nâu" trong tiếng Anh là gì?
+A. Red
+B. Orange
+C. Yellow
+D. Brown
+D
+"Xanh ngọc" trong tiếng Anh là gì?
+A. Green
+B. Blue
+C. Emerald
+D. Turquoise
+C
+"Tuần" trong tiếng Anh là gì?
+A. Week
+B. Month
+C. Year
+D. Day
+A
+"Tháng" trong tiếng Anh là gì?
+A. Week
+B. Month
+C. Year
+D. Day
+B
+"Năm" trong tiếng Anh là gì?
+A. Week
+B. Month
+C. Year
+D. Day
+C
+"Ngày" trong tiếng Anh là gì?
+A. Week
+B. Month
+C. Year
+D. Day
+D
+"Giờ" trong tiếng Anh là gì?
+A. Hour
+B. Minute
+C. Second
+D. Week
+A
+"Phút" trong tiếng Anh là gì?
+A. Hour
+B. Minute
+C. Second
+D. Week
+B
+"Giây" trong tiếng Anh là gì?
+A. Hour
+B. Minute
+C. Second
+D. Week
+C
+"Tuyết rơi" trong tiếng Anh là gì?
+A. Snowing
+B. Sleet
+C. Hail
+D. Freezing rain
+A
+"Mưa đá" trong tiếng Anh là gì?
+A. Snowing
+B. Sleet
+C. Hail
+D. Freezing rain
+C
+"Biển động" trong tiếng Anh là gì?
+A. Storm
+B. Tornado
+C. Hurricane
+D. Rough seas
+D
+"Lũ lụt" trong tiếng Anh là gì?
+A. Drought
+B. Flood
+C. Tornado
+D. Hurricane
+B
+"Bão cát" trong tiếng Anh là gì?
+A. Storm
+B. Tornado
+C. Dust storm
+D. Hurricane
+C
+"Hạn hán" trong tiếng Anh là gì?
+A. Drought
+B. Flood
+C. Tornado
+D. Hurricane
+A
+"Trí tuệ nhân tạo" trong tiếng Anh là gì?
+A. Artificial intelligence
+B. Intelligence
+C. Artificial
+D. Intelligent
+A
+"Không gian mạng" trong tiếng Anh là gì?
+A. Cyberspace
+B. Space
+C. Cyber
+D. Network
+A
+"Tự do ngôn luận" trong tiếng Anh là gì?
+A. Freedom of speech
+B. Freedom
+C. Speech
+D. Thought
+A
+"Hiện tượng lạ" trong tiếng Anh là gì?
+A. Phenomenon
+B. Weird
+C. Strange
+D. Odd
+A
+"Thiên tài" trong tiếng Anh là gì?
+A. Genius
+B. Intelligent
+C. Smart
+D. Clever
+A
+"Tài năng" trong tiếng Anh là gì?
+A. Talent
+B. Skill
+C. Ability
+D. Intelligence
+A
+"Ăn" trong tiếng Anh là gì?
+A. Eat
+B. Drink
+C. Sleep
+D. Work
+A
+"Uống" trong tiếng Anh là gì?
+A. Eat
+B. Drink
+C. Sleep
+D. Work
+B
+"Ngủ" trong tiếng Anh là gì?
+A. Eat
+B. Drink
+C. Sleep
+D. Work
+C
+"Đi" trong tiếng Anh là gì?
+A. Go
+B. Come
+C. Run
+D. Walk
+A
+"Đến" trong tiếng Anh là gì?
+A. Go
+B. Come
+C. Run
+D. Walk
+B
+"Ghét" trong tiếng Anh là gì?
+A. Like
+B. Love
+C. Enjoy
+D. Hate
+D
+"Đồng ý" trong tiếng Anh là gì?
+A. Agree
+B. Disagree
+C. Accept
+D. Consent
+A
+"Không đồng ý" trong tiếng Anh là gì?
+A. Agree
+B. Disagree
+C. Accept
+D. Consent
+B
+"Hiểu" trong tiếng Anh là gì?
+A. Understand
+B. Know
+C. Learn
+D. Recognize
+A
+"Biết" trong tiếng Anh là gì?
+A. Understand
+B. Know
+C. Learn
+D. Recognize
+B
+"Học" trong tiếng Anh là gì?
+A. Understand
+B. Know
+C. Learn
+D. Recognize
+C
+What is the antonym of 'big'?
+A. small
+B. large
+C. huge
+D. giant
+A
+What is the antonym of 'good'?
+A. bad
+B. nice
+C. great
+D. wonderful
+A
+What is the antonym of 'beautiful'?
+A. ugly
+B. pretty
+C. handsome
+D. cute
+A
+What is the antonym of 'happy'?
+A. glad
+B. small
+C. sad
+D. lonely
+C
+What is the antonym of 'true'?
+A. real
+B. false
+C. genuine
+D. authentic
+B
+What is the antonym of 'fast'?
+A. slow
+B. quick
+C. rapid
+D. swift
+A
+What is the synonym of 'large'?
+A. stupid
+B. tiny
+C. huge
+D. small
+C
+What is the synonym of 'smart'?
+A. clever
+B. dull
+C. embarassing
+D. foolish
+A
+What is the synonym of 'brave'?
+A. timid
+B. courageous
+C. fearful
+D. shy
+B
+What is the synonym of 'fast'?
+A. slow
+B. quick
+C. pretty
+D. big
+B
+What is the synonym of 'beautiful'?
+A. pretty
+B. ugly
+C. lonely
+D. dark
+A
+What is the synonym of 'expand'?
+A. contract
+B. grow
+C. decrease
+D. diminish
+B
+What is the synonym of 'vibrant'?
+A. dull
+B. lively
+C. boring
+D. monotonous
+B
+What is the synonym of 'generous'?
+A. selfish
+B. stingy
+C. kind
+D. greedy
+C
+What is the synonym of 'intelligent'?
+A. smart
+B. foolish
+C. dull-witted
+D. ignorant
+A
+What is the synonym of 'captivating'?
+A. boring
+B. charming
+C. uninteresting
+D. tedious
+B
+What is the synonym of 'abundant'?
+A. scarce
+B. plentiful
+C. limited
+D. insufficient
+B
+What is the synonym of 'innovative'?
+A. traditional
+B. creative
+C. conventional
+D. unoriginal
+B
+What is the synonym of 'persistent'?
+A. brief
+B. consistent
+C. temporary
+D. sporadic
+B
+What is the synonym of 'fortunate'?
+A. unlucky
+B. lucky
+C. embarassing
+D. miserable
+B
+What is the synonym of 'humble'?
+A. arrogant
+B. modest
+C. conceited
+D. egotistical
+B
+What is the synonym of 'abandon'?
+A. retain
+B. desert
+C. preserve
+D. maintain
+B
+What is the synonym of 'benevolent'?
+A. malevolent
+B. kind
+C. malicious
+D. cruel
+B
