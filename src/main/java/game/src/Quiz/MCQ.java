@@ -1,17 +1,26 @@
 package game.src.Quiz;
 
+import graphicUserInterface.ChooseGame;
+import graphicUserInterface.DictFinish;
+import graphicUserInterface.RoundButton;
+import graphicUserInterface.Setting;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.Objects;
 
-public class MCQ extends JFrame {
+import static imageDictionary.imageList.*;
+
+public class MCQ extends JFrame implements ActionListener {
     private JPanel panel1;
     public JButton bButton;
     public JButton cButton;
     public JButton dButton;
     public JButton aButton;
+    public JButton buttonBack, buttonAudio;
     private JLabel questionLabel;
     public JLabel resultText;
     public JButton NEXTButton;
@@ -22,7 +31,11 @@ public class MCQ extends JFrame {
 
     private String playersAnswer;
 
+
     private String correctAnswer;
+
+    private final int WIDTH_WINDOW = 900;
+    private final int HEIGHT_WINDOW = 700;
 
     private int score;
     public void setPlayersAnswer(String s) {
@@ -92,8 +105,28 @@ public class MCQ extends JFrame {
         Score.setText("Score: 0  ");
         setContentPane(panel1);
         setTitle("Quiz");
-        setSize(900, 700);
+        setSize(WIDTH_WINDOW, HEIGHT_WINDOW);
         setLocationRelativeTo(null);
+        buttonBack = new RoundButton("Back",20,20);
+
+        buttonBack.setBounds(20, 450, 100, 25);
+        /*buttonBack.setBackground(Color.white);
+        buttonBack.setOpaque(true);*/
+        buttonBack.addActionListener(this);
+        buttonBack.setIcon(iconBack);
+        buttonBack.setToolTipText("Thoát");
+
+        buttonAudio = new RoundButton("",45,45);
+        buttonAudio.setBounds(10, 0, 25, 25);
+        buttonAudio.addActionListener(this);
+        if (Setting.isPlaying) {
+            buttonAudio.setIcon(iconAudioOff);
+            buttonAudio.setToolTipText("Nhấn vào đây để bật nhạc");
+        }
+        else {
+            buttonAudio.setIcon(iconAudioOn);
+            buttonAudio.setToolTipText("Nhấn vào đây để tắt nhạc");
+        }
         resultPanel.setVisible(false);
         RESTARTButton.setVisible(false);
         finalScoreText.setVisible(false);
@@ -102,4 +135,29 @@ public class MCQ extends JFrame {
 
     }
 
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource().equals(buttonBack)) {
+            sound.SoundPlay.playSoundNonReset("sound/click.wav");
+            this.dispose();
+            new ChooseGame();
+        }
+        if (e.getSource().equals(buttonAudio)) {
+            sound.SoundPlay.playSoundNonReset("sound/click.wav");
+            if (Setting.isPlaying) {
+                sound.SoundPlay.playSoundNonReset("sound/click.wav");
+                Setting.chooseMusic();
+                sound.SoundPlay.playSoundReset(Setting.soundFile);
+                sound.SoundPlay.setVolume(Setting.savedValue);
+                buttonAudio.setIcon(iconAudioOn);
+                buttonAudio.setToolTipText("Nhấn vào đây để tắt nhạc");
+            } else {
+                sound.SoundPlay.clip.stop();
+                sound.SoundPlay.clipBack.stop(); // de phong viec back lai trang cu se van phat nhac
+                sound.SoundPlay.playSoundNonReset("sound/click.wav");
+                buttonAudio.setIcon(iconAudioOff);
+                buttonAudio.setToolTipText("Nhấn vào đây để bật nhạc");
+            }
+            Setting.isPlaying = !Setting.isPlaying;
+        }
+    }
 }

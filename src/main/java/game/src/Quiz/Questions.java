@@ -23,7 +23,7 @@ public class Questions {
 
     public Questions() throws FileNotFoundException {
         questions = new ArrayList<>() ;
-        File file = new File("questions.txt");
+        File file = new File("C:\\Users\\DELL\\Documents\\GitHub\\OOP_proj\\src\\main\\java\\game\\questions.txt");
         Scanner scanner = new Scanner(file);
 
         // Đọc các câu hỏi từ file

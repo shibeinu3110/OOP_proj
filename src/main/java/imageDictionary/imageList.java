@@ -25,4 +25,6 @@ public class imageList {
     public static final ImageIcon iconGame = new ImageIcon("src/main/java/UI/game.png");
     public static final ImageIcon iconSetting = new ImageIcon("src/main/java/UI/setting.png");
     public static final ImageIcon iconChoose = new ImageIcon("src/main/java/UI/choose.png");
+    public static final ImageIcon iconQuiz = new ImageIcon("src/main/java/UI/practice.jpg");
+    public static final ImageIcon iconHangman = new ImageIcon("src/main/java/UI/hangman.png");
 }

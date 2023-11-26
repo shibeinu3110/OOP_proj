@@ -21,7 +21,7 @@ public class Setting extends JFrame implements ActionListener {
 
     JLabel labelMusicBar, labelVolumeBar;
 
-    static boolean isPlaying = false;
+    public static boolean isPlaying = false;
 
     String[] option = {"Music Song 1", "Music Song 2", "Music Song 3", "Music Song 4"};
     String[] option1 = {"Music Song 2", "Music Song 1", "Music Song 3", "Music Song 4"};

@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
 
-class RoundButton extends JButton {
+public class RoundButton extends JButton {
     private final int arcWidth;
     private final int arcHeight;
 

@@ -1,30 +1,26 @@
 package graphicUserInterface;
 
-import sound.SoundPlay;
+import game.src.Hangman.Hangman;
+import game.src.Quiz.Game1;
 
 import javax.swing.*;
-import javax.swing.event.DocumentListener;
-import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseListener;
-
+import java.io.IOException;
 
 import static imageDictionary.imageList.*;
+import static imageDictionary.imageList.iconGame;
 
-
-public class Menu extends JFrame implements ActionListener {
-
-    JButton buttonDictPanel, buttonNW, buttonGame, buttonSetting, buttonExit, buttonAudio;
+public class ChooseGame extends JFrame implements ActionListener {
+    JButton buttonGame, buttonQuiz, buttonBack, buttonAudio;
 
     JPanel jPanelRight, jPanelLeft;
 
     private final int WIDTH_WINDOW = 900;
     private final int HEIGHT_WINDOW = 700;
 
-    public Menu() {
+    public ChooseGame() {
         super("Dictionary EV ");            //set title
         //Container container = getContentPane(); //create container
 
@@ -57,7 +53,6 @@ public class Menu extends JFrame implements ActionListener {
 
         this.add(jPanelRight);
         addToRight();
-
     }
 
     void addToLeft() {
@@ -66,48 +61,20 @@ public class Menu extends JFrame implements ActionListener {
 
     void addToRight() {
 
-        buttonDictPanel = new RoundButton("Tra từ",20,20);
-
-        buttonDictPanel.setBounds(600, 150, 200, 36);
-        /*buttonBack.setBackground(Color.white);
-        buttonBack.setOpaque(true);*/
-        buttonDictPanel.addActionListener(this);
-        buttonDictPanel.setToolTipText("Tra từ");
-        buttonDictPanel.setIcon(iconSearch);
-        jPanelRight.add(buttonDictPanel);
+        buttonQuiz = new RoundButton("Quiz",20,20);
+        buttonQuiz.setBounds(600, 200, 200, 36);
+        buttonQuiz.addActionListener(this);
+        buttonQuiz.setToolTipText("Câu hỏi ôn tập");
+        buttonQuiz.setIcon(iconQuiz);
+        jPanelRight.add(buttonQuiz);
 
 
-        buttonNW = new RoundButton("Dịch văn bản",20,20);
-        buttonNW.setBounds(600, 200, 200, 36);
-        buttonNW.addActionListener(this);
-        buttonNW.setToolTipText("Dịch văn bản");
-        buttonNW.setIcon(iconTrans);
-        jPanelRight.add(buttonNW);
-
-
-        buttonGame = new RoundButton("Trò chơi",20,20);
+        buttonGame = new RoundButton("Hangman",20,20);
         buttonGame.setBounds(600, 250, 200, 36);
         buttonGame.addActionListener(this);
-        buttonGame.setToolTipText("Trò chơi");
-        buttonGame.setIcon(iconGame);
+        buttonGame.setToolTipText("Game Hangman");
+        buttonGame.setIcon(iconHangman);
         jPanelRight.add(buttonGame);
-
-        buttonSetting = new RoundButton("Cài đặt",20,20);
-        buttonSetting.setBounds(600, 300, 200, 36);
-        buttonSetting.addActionListener(this);
-        buttonSetting.setToolTipText("Cài đặt");
-        buttonSetting.setIcon(iconSetting);
-        jPanelRight.add(buttonSetting);
-
-        buttonExit = new RoundButton("Exit",20,20);
-
-        buttonExit.setBounds(20, 450, 100, 25);
-        /*buttonBack.setBackground(Color.white);
-        buttonBack.setOpaque(true);*/
-        buttonExit.addActionListener(this);
-        buttonExit.setIcon(iconBack);
-        buttonExit.setToolTipText("Thoát");
-        jPanelRight.add(buttonExit);
 
         buttonAudio = new RoundButton("",45,45);
         buttonAudio.setBounds(10, 0, 25, 25);
@@ -122,33 +89,33 @@ public class Menu extends JFrame implements ActionListener {
         }
         jPanelRight.add(buttonAudio);
 
+        buttonBack = new RoundButton("Back",20,20);
 
+        buttonBack.setBounds(20, 450, 100, 25);
+        /*buttonBack.setBackground(Color.white);
+        buttonBack.setOpaque(true);*/
+        buttonBack.addActionListener(this);
+        buttonBack.setIcon(iconBack);
+        buttonBack.setToolTipText("Thoát");
+        jPanelRight.add(buttonBack);
     }
 
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource().equals(buttonDictPanel)) {
-            sound.SoundPlay.playSoundNonReset("sound/click.wav");
+        if(e.getSource().equals(buttonQuiz)) {
             this.dispose();
-            new DictPanel();
-        }
-        if(e.getSource().equals(buttonNW)) {
-            sound.SoundPlay.playSoundNonReset("sound/click.wav");
-            this.dispose();
-            new NewWindow();
-        }
-        if(e.getSource().equals(buttonSetting)) {
-            sound.SoundPlay.playSoundNonReset("sound/click.wav");
-            this.dispose();
-            new Setting();
-        }
-        if(e.getSource().equals(buttonExit)) {
-            sound.SoundPlay.playSoundNonReset("sound/click.wav");
-            this.dispose();
+            try {
+                Game1 game1 = new Game1();
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
+            }
         }
         if(e.getSource().equals(buttonGame)) {
-            sound.SoundPlay.playSoundNonReset("sound/click.wav");
             this.dispose();
-            new ChooseGame();
+            try {
+                Hangman hangMan = new Hangman();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
         }
         if(e.getSource().equals(buttonAudio)) {
             sound.SoundPlay.playSoundNonReset("sound/click.wav");
@@ -168,7 +135,10 @@ public class Menu extends JFrame implements ActionListener {
             }
             Setting.isPlaying = !Setting.isPlaying;
         }
+        if(e.getSource().equals(buttonBack)) {
+            sound.SoundPlay.playSoundNonReset("sound/click.wav");
+            this.dispose();
+            DictFinish dictFinish = new DictFinish();
+        }
     }
-
 }
-
