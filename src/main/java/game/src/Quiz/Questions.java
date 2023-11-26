@@ -14,16 +14,14 @@ public class Questions {
     }
 
     public Question getRandomQuestion() {
-        // Lấy một số ngẫu nhiên trong khoảng từ 0 đến số lượng câu hỏi
         int randomIndex = (int) (Math.random() * questions.size());
 
-        // Trả về câu hỏi ở vị trí ngẫu nhiên đó
         return questions.get(randomIndex);
     }
 
     public Questions() throws FileNotFoundException {
         questions = new ArrayList<>() ;
-        File file = new File("C:\\Users\\DELL\\Documents\\GitHub\\OOP_proj\\src\\main\\java\\game\\questions.txt");
+        File file = new File("src/main/java/game/questions.txt");
         Scanner scanner = new Scanner(file);
 
         // Đọc các câu hỏi từ file

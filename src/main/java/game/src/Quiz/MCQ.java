@@ -1,7 +1,6 @@
 package game.src.Quiz;
 
 import graphicUserInterface.ChooseGame;
-import graphicUserInterface.DictFinish;
 import graphicUserInterface.RoundButton;
 import graphicUserInterface.Setting;
 
@@ -9,7 +8,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.util.Objects;
 
 import static imageDictionary.imageList.*;
@@ -20,7 +18,6 @@ public class MCQ extends JFrame implements ActionListener {
     public JButton cButton;
     public JButton dButton;
     public JButton aButton;
-    public JButton buttonBack, buttonAudio;
     private JLabel questionLabel;
     public JLabel resultText;
     public JButton NEXTButton;
@@ -28,6 +25,9 @@ public class MCQ extends JFrame implements ActionListener {
     private JLabel Score;
     private JLabel finalScoreText;
     private JButton RESTARTButton;
+    private JPanel buttonPanel;
+    private JButton buttonBack;
+    private JButton buttonAudio;
 
     private String playersAnswer;
 
@@ -107,17 +107,15 @@ public class MCQ extends JFrame implements ActionListener {
         setTitle("Quiz");
         setSize(WIDTH_WINDOW, HEIGHT_WINDOW);
         setLocationRelativeTo(null);
-        buttonBack = new RoundButton("Back",20,20);
 
-        buttonBack.setBounds(20, 450, 100, 25);
+        buttonBack.setBounds(-1, -1, 100, 25);
         /*buttonBack.setBackground(Color.white);
         buttonBack.setOpaque(true);*/
         buttonBack.addActionListener(this);
         buttonBack.setIcon(iconBack);
         buttonBack.setToolTipText("Thoát");
 
-        buttonAudio = new RoundButton("",45,45);
-        buttonAudio.setBounds(10, 0, 25, 25);
+        buttonAudio.setBounds(-1, -1 , 25, 25);
         buttonAudio.addActionListener(this);
         if (Setting.isPlaying) {
             buttonAudio.setIcon(iconAudioOff);
@@ -127,6 +125,7 @@ public class MCQ extends JFrame implements ActionListener {
             buttonAudio.setIcon(iconAudioOn);
             buttonAudio.setToolTipText("Nhấn vào đây để tắt nhạc");
         }
+
         resultPanel.setVisible(false);
         RESTARTButton.setVisible(false);
         finalScoreText.setVisible(false);

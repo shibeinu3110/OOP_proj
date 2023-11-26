@@ -12,7 +12,7 @@ public class Words {
 
     public Words() throws FileNotFoundException {
         words = new ArrayList<>();
-        File file = new File("hangmanwords.txt");
+        File file = new File("src/main/java/game/hangmanwords.txt");
         Scanner scanner = new Scanner(file);
         String blankLine = scanner.nextLine();
         while (scanner.hasNextLine()) {
