@@ -1,7 +1,7 @@
 package graphicUserInterface;
 
-import game.src.Hangman.Hangman;
-import game.src.Quiz.Game1;
+import game.Hangman.Hangman;
+import game.Quiz.Quiz;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,7 +10,6 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import static imageDictionary.imageList.*;
-import static imageDictionary.imageList.iconGame;
 
 public class ChooseGame extends JFrame implements ActionListener {
     JButton buttonGame, buttonQuiz, buttonBack, buttonAudio;
@@ -104,7 +103,7 @@ public class ChooseGame extends JFrame implements ActionListener {
         if(e.getSource().equals(buttonQuiz)) {
             this.dispose();
             try {
-                Game1 game1 = new Game1();
+                new Quiz();
             } catch (Exception ex) {
                 throw new RuntimeException(ex);
             }
@@ -112,7 +111,7 @@ public class ChooseGame extends JFrame implements ActionListener {
         if(e.getSource().equals(buttonGame)) {
             this.dispose();
             try {
-                Hangman hangMan = new Hangman();
+                new Hangman();
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
@@ -138,7 +137,7 @@ public class ChooseGame extends JFrame implements ActionListener {
         if(e.getSource().equals(buttonBack)) {
             sound.SoundPlay.playSoundNonReset("sound/click.wav");
             this.dispose();
-            DictFinish dictFinish = new DictFinish();
+            new DictFinish();
         }
     }
 }

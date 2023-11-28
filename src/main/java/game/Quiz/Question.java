@@ -1,4 +1,4 @@
-package game.src.Quiz;
+package game.Quiz;
 
 public class Question {
 

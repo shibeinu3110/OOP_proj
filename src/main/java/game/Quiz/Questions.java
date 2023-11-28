@@ -1,4 +1,4 @@
-package game.src.Quiz;
+package game.Quiz;
 
 import java.io.File;
 import java.io.FileNotFoundException;

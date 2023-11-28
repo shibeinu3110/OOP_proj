@@ -1,7 +1,6 @@
-package game.src.Quiz;
+package game.Quiz;
 
 import graphicUserInterface.ChooseGame;
-import graphicUserInterface.RoundButton;
 import graphicUserInterface.Setting;
 
 import javax.swing.*;

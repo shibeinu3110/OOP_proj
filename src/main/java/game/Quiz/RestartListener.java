@@ -1,4 +1,4 @@
-package game.src.Quiz;
+package game.Quiz;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,7 +18,7 @@ public class RestartListener implements ActionListener {
         mcq.dispose();
 
         try {
-            new Game1();
+            new Quiz();
         } catch (Exception ex) {
             throw new RuntimeException(ex);
         }

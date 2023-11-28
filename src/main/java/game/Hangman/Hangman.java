@@ -1,4 +1,4 @@
-package game.src.Hangman;
+package game.Hangman;
 
 import javax.swing.*;
 import java.awt.*;
@@ -35,20 +35,21 @@ public class Hangman extends JFrame implements ActionListener {
         setLayout(null);
         word = new Words().getRandomWord();
         letterButtons = new JButton[26];
-        NeueHaas = Tools.createFont("src/main/java/game/src/Hangman/NeueHaasDisplayBold.ttf");
-        TanNimbus = Tools.createFont("src/main/java/game/src/Hangman/TANNIMBUS.ttf");
+        NeueHaas = Tools.createFont("src/main/java/game/Hangman/NeueHaasDisplayBlack.ttf");
+        TanNimbus = Tools.createFont("src/main/java/game/Hangman/TANNIMBUS.ttf");
         createResultDialog();
         createUIComponents();
+        setVisible(true);
     }
 
 
     private void createUIComponents() {
         //background
-        background = Tools.loadImage("src/main/java/game/src/Hangman/gameBackground.png");
+        background = Tools.loadImage("src/main/java/game/Hangman/gameBackground.png");
         background.setBounds(0, 0, 900, 700);
 
         //hanging tree
-        hangingTree = Tools.loadImage("src/main/java/game/src/Hangman/hangman0.png");
+        hangingTree = Tools.loadImage("src/main/java/game/Hangman/hangman0.png");
         hangingTree.setBounds(0, 0, hangingTree.getPreferredSize().width, hangingTree.getPreferredSize().height);
 
 
@@ -129,7 +130,7 @@ public class Hangman extends JFrame implements ActionListener {
                 }
             } else {
                 incorrectGuesses++;
-                Tools.updateImage(hangingTree, "src/main/java/game/src/Hangman/hangman" + incorrectGuesses + ".png");
+                Tools.updateImage(hangingTree, "src/main/java/game/Hangman/hangman" + incorrectGuesses + ".png");
                 hangingTree.setBounds(0, 0, hangingTree.getPreferredSize().width, hangingTree.getPreferredSize().height);
                 //lose
                 if(incorrectGuesses >= 6) {
@@ -185,7 +186,7 @@ public class Hangman extends JFrame implements ActionListener {
     private void restartHangman() throws FileNotFoundException {
         word = new Words().getRandomWord();
         incorrectGuesses = 0;
-        Tools.updateImage(hangingTree, "src/main/java/game/src/Hangman/hangman0.png");
+        Tools.updateImage(hangingTree, "src/main/java/game/Hangman/hangman0.png");
         hangingTree.setBounds(0, 0, hangingTree.getPreferredSize().width, hangingTree.getPreferredSize().height);
         String hiddenWord = Tools.hideWords(word);
         hiddenWordLabel.setText(hiddenWord);

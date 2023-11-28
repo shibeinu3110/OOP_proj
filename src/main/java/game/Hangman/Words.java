@@ -1,4 +1,4 @@
-package game.src.Hangman;
+package game.Hangman;
 
 import java.io.File;
 import java.io.FileNotFoundException;

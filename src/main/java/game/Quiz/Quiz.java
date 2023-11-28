@@ -1,10 +1,10 @@
-package game.src.Quiz;
+package game.Quiz;
 
 import java.awt.event.ActionListener;
 
-public class Game1 {
+public class Quiz {
 
-    public Game1() throws Exception {
+    public Quiz() throws Exception {
         MCQ mcq = new MCQ();
         Questions questions = new Questions();
         Question question = questions.getRandomQuestion();
