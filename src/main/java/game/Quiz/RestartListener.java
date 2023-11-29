@@ -15,6 +15,7 @@ public class RestartListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
+        sound.SoundPlay.playSoundNonReset("sound/click.wav");
         mcq.dispose();
 
         try {
