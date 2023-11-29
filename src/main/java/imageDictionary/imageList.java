@@ -17,6 +17,7 @@ public class imageList {
     public static final ImageIcon bg2 = new ImageIcon("src/main/java/UI/2.jpg");
     public static final ImageIcon bg3 = new ImageIcon("src/main/java/UI/3.jpg");
     public static final ImageIcon bg4 = new ImageIcon("src/main/java/UI/4.jpg");
+    public static final ImageIcon bg5 = new ImageIcon("src/main/java/UI/5.jpg");
     public static final ImageIcon engIcon = new ImageIcon("src/main/java/UI/england.jpg");
     public static final ImageIcon vieIcon = new ImageIcon("src/main/java/UI/viet.jpg");
     public static final ImageIcon iconSound = new ImageIcon("src/main/java/UI/sound.png");
@@ -27,4 +28,6 @@ public class imageList {
     public static final ImageIcon iconChoose = new ImageIcon("src/main/java/UI/choose.png");
     public static final ImageIcon iconQuiz = new ImageIcon("src/main/java/UI/practice.jpg");
     public static final ImageIcon iconHangman = new ImageIcon("src/main/java/UI/hangman.png");
+    public static final ImageIcon quizIcon = new ImageIcon("src/main/java/UI/quiz.jpg");
+    public static final ImageIcon hangIcon = new ImageIcon("src/main/java/UI/hangmanIc.png");
 }
