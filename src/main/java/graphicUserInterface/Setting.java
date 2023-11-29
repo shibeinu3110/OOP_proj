@@ -79,35 +79,41 @@ public class Setting extends JFrame implements ActionListener {
     }
 
     void addToTop() {
-
+        JLabel label1 = new JLabel();
+        ImageIcon imageIcon1 = new ImageIcon(soundP.getImage());
+        label1.setIcon(imageIcon1);
+        label1.setBounds(0,0,900,150);
+        jPanelTop.add(label1);
     }
 
     void addToBot() {
+        JLabel label1 = new JLabel();
+        ImageIcon imageIcon1 = new ImageIcon(bg5.getImage());
+        label1.setIcon(imageIcon1);
+        label1.setBounds(0,0,900,550);
 
         labelMusicBar = new JLabel("⁂ Music ⁂");
         labelMusicBar.setFont(new Font(Font.MONOSPACED, Font.BOLD, 16));
         labelMusicBar.setForeground(Color.white);
-        labelMusicBar.setBounds(400, 55, 180, 20);
+        labelMusicBar.setBounds(250, 155, 180, 20);
         jPanelBot.add(labelMusicBar);
 
         labelVolumeBar = new JLabel("Volume");
         labelVolumeBar.setFont(new Font(Font.MONOSPACED, Font.BOLD, 16));
         labelVolumeBar.setForeground(Color.white);
-        labelVolumeBar.setBounds(420, 150, 180, 20);
+        labelVolumeBar.setBounds(270, 250, 180, 20);
         jPanelBot.add(labelVolumeBar);
 
         buttonBack = new RoundButton("Back", 20, 20);
 
-        buttonBack.setBounds(20, 450, 100, 25);
-        /*buttonBack.setBackground(Color.white);
-        buttonBack.setOpaque(true);*/
+        buttonBack.setBounds(30, 440, 100, 30);
         buttonBack.addActionListener(this);
         buttonBack.setIcon(iconBack);
         buttonBack.setToolTipText("Thoát");
         jPanelBot.add(buttonBack);
 
         buttonAudio = new RoundButton("",25,25);
-        buttonAudio.setBounds(750, 55, 23, 23);
+        buttonAudio.setBounds(600, 150, 30, 30);
         buttonAudio.addActionListener(this);
         buttonAudio.setIcon(iconChoose);
         buttonAudio.setToolTipText("Chọn");
@@ -122,11 +128,11 @@ public class Setting extends JFrame implements ActionListener {
         } else {
             jComboBox = new JComboBox(option3);
         }
-        jComboBox.setBounds(520, 50, 200, 30);
+        jComboBox.setBounds(370, 150, 200, 30);
         jPanelBot.add(jComboBox);
 
         volumeSlider = new JSlider();
-        volumeSlider.setBounds(520, 150, 200, 30);
+        volumeSlider.setBounds(370, 250, 200, 30);
         volumeSlider.setMinimum(0);
         volumeSlider.setMaximum(100);
         volumeSlider.setOrientation(JSlider.HORIZONTAL);
@@ -137,6 +143,7 @@ public class Setting extends JFrame implements ActionListener {
             savedValue = value;
         });
         jPanelBot.add(volumeSlider);
+        jPanelBot.add(label1);
     }
 
     public void actionPerformed(ActionEvent e) {

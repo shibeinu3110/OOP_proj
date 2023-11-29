@@ -61,16 +61,23 @@ public class Menu extends JFrame implements ActionListener {
     }
 
     void addToLeft() {
-
+        JLabel label1 = new JLabel();
+        ImageIcon imageIcon1 = new ImageIcon(menuP.getImage());
+        label1.setIcon(imageIcon1);
+        label1.setBounds(0,0,900,150);
+        jPanelLeft.add(label1);
     }
 
     void addToRight() {
+        JLabel label1 = new JLabel();
+        ImageIcon imageIcon1 = new ImageIcon(bg5.getImage());
+        label1.setIcon(imageIcon1);
+        label1.setBounds(0,0,900,550);
 
         buttonDictPanel = new RoundButton("Tra từ",20,20);
 
-        buttonDictPanel.setBounds(600, 150, 200, 36);
-        /*buttonBack.setBackground(Color.white);
-        buttonBack.setOpaque(true);*/
+        buttonDictPanel.setBounds(350, 80, 200, 60);
+
         buttonDictPanel.addActionListener(this);
         buttonDictPanel.setToolTipText("Tra từ");
         buttonDictPanel.setIcon(iconSearch);
@@ -78,7 +85,7 @@ public class Menu extends JFrame implements ActionListener {
 
 
         buttonNW = new RoundButton("Dịch văn bản",20,20);
-        buttonNW.setBounds(600, 200, 200, 36);
+        buttonNW.setBounds(350, 160, 200, 60);
         buttonNW.addActionListener(this);
         buttonNW.setToolTipText("Dịch văn bản");
         buttonNW.setIcon(iconTrans);
@@ -86,31 +93,28 @@ public class Menu extends JFrame implements ActionListener {
 
 
         buttonGame = new RoundButton("Trò chơi",20,20);
-        buttonGame.setBounds(600, 250, 200, 36);
+        buttonGame.setBounds(350, 240, 200, 60);
         buttonGame.addActionListener(this);
         buttonGame.setToolTipText("Trò chơi");
         buttonGame.setIcon(iconGame);
         jPanelRight.add(buttonGame);
 
         buttonSetting = new RoundButton("Cài đặt",20,20);
-        buttonSetting.setBounds(600, 300, 200, 36);
+        buttonSetting.setBounds(350, 320, 200, 60);
         buttonSetting.addActionListener(this);
         buttonSetting.setToolTipText("Cài đặt");
         buttonSetting.setIcon(iconSetting);
         jPanelRight.add(buttonSetting);
 
         buttonExit = new RoundButton("Exit",20,20);
-
-        buttonExit.setBounds(20, 450, 100, 25);
-        /*buttonBack.setBackground(Color.white);
-        buttonBack.setOpaque(true);*/
+        buttonExit.setBounds(30, 440, 100, 30);
         buttonExit.addActionListener(this);
         buttonExit.setIcon(iconBack);
         buttonExit.setToolTipText("Thoát");
         jPanelRight.add(buttonExit);
 
-        buttonAudio = new RoundButton("",45,45);
-        buttonAudio.setBounds(10, 0, 25, 25);
+        buttonAudio = new RoundButton("",100,100);
+        buttonAudio.setBounds(15, 15, 35, 35);
         buttonAudio.addActionListener(this);
         if (Setting.isPlaying) {
             buttonAudio.setIcon(iconAudioOff);
@@ -121,7 +125,7 @@ public class Menu extends JFrame implements ActionListener {
             buttonAudio.setToolTipText("Nhấn vào đây để tắt nhạc");
         }
         jPanelRight.add(buttonAudio);
-
+        jPanelRight.add(label1);
 
     }
 

@@ -55,28 +55,41 @@ public class ChooseGame extends JFrame implements ActionListener {
     }
 
     void addToLeft() {
-
+        JLabel label1 = new JLabel();
+        ImageIcon imageIcon1 = new ImageIcon(gameP.getImage());
+        label1.setIcon(imageIcon1);
+        label1.setBounds(0,0,900,150);
+        jPanelLeft.add(label1);
     }
 
     void addToRight() {
+        JLabel label1 = new JLabel();
+        ImageIcon imageIcon1 = new ImageIcon(bg5.getImage());
+        label1.setIcon(imageIcon1);
+        label1.setBounds(0,0,900,550);
 
-        buttonQuiz = new RoundButton("Quiz",20,20);
-        buttonQuiz.setBounds(600, 200, 200, 36);
+        buttonQuiz = new RoundButton(null,20,20);
+        buttonQuiz.setBounds(80, 80, 300, 300);
         buttonQuiz.addActionListener(this);
         buttonQuiz.setToolTipText("Câu hỏi ôn tập");
+        ImageIcon iconQuiz = new ImageIcon(quizIcon.getImage());
         buttonQuiz.setIcon(iconQuiz);
+        buttonQuiz.setHorizontalAlignment(SwingConstants.CENTER);
+        buttonQuiz.setVerticalAlignment(SwingConstants.CENTER);
         jPanelRight.add(buttonQuiz);
 
 
-        buttonGame = new RoundButton("Hangman",20,20);
-        buttonGame.setBounds(600, 250, 200, 36);
+        buttonGame = new RoundButton(null,20,20);
+        buttonGame.setBounds(490, 80, 300, 300);
         buttonGame.addActionListener(this);
-        buttonGame.setToolTipText("Game Hangman");
-        buttonGame.setIcon(iconHangman);
+        ImageIcon iconHang = new ImageIcon(hangIcon.getImage());
+        buttonGame.setIcon(iconHang);
+        buttonGame.setHorizontalAlignment(SwingConstants.CENTER);
+        buttonGame.setVerticalAlignment(SwingConstants.CENTER);
         jPanelRight.add(buttonGame);
 
-        buttonAudio = new RoundButton("",45,45);
-        buttonAudio.setBounds(10, 0, 25, 25);
+        buttonAudio = new RoundButton("",100,100);
+        buttonAudio.setBounds(15, 15, 35, 35);
         buttonAudio.addActionListener(this);
         if (Setting.isPlaying) {
             buttonAudio.setIcon(iconAudioOff);
@@ -89,14 +102,12 @@ public class ChooseGame extends JFrame implements ActionListener {
         jPanelRight.add(buttonAudio);
 
         buttonBack = new RoundButton("Back",20,20);
-
-        buttonBack.setBounds(20, 450, 100, 25);
-        /*buttonBack.setBackground(Color.white);
-        buttonBack.setOpaque(true);*/
+        buttonBack.setBounds(30, 440, 100, 30);
         buttonBack.addActionListener(this);
         buttonBack.setIcon(iconBack);
         buttonBack.setToolTipText("Thoát");
         jPanelRight.add(buttonBack);
+        jPanelRight.add(label1);
     }
 
     public void actionPerformed(ActionEvent e) {

@@ -74,17 +74,24 @@ public class NewWindow extends JFrame implements ActionListener {
 
     void addToTop()
     {
-
+        JLabel label1 = new JLabel();
+        ImageIcon imageIcon1 = new ImageIcon(transP.getImage());
+        label1.setIcon(imageIcon1);
+        label1.setBounds(0,0,900,150);
+        jPanelTop.add(label1);
     }
 
     void addToBot()
     {
+        JLabel label1 = new JLabel();
+        ImageIcon imageIcon1 = new ImageIcon(bg5.getImage());
+        label1.setIcon(imageIcon1);
+        label1.setBounds(0,0,900,550);
         //button
         buttonBack = new RoundButton("Back",20,20);
 
-        buttonBack.setBounds(20, 450, 100, 25);
-        /*buttonBack.setBackground(Color.white);
-        buttonBack.setOpaque(true);*/
+        buttonBack = new RoundButton("Back",20,20);
+        buttonBack.setBounds(30, 440, 100, 30);
         buttonBack.addActionListener(this);
         buttonBack.setIcon(iconBack);
         buttonBack.setToolTipText("Thoát");
@@ -97,7 +104,7 @@ public class NewWindow extends JFrame implements ActionListener {
         textFieldQues.setWrapStyleWord(true);
 
         JScrollPane scrollPane = new JScrollPane(textFieldQues);
-        scrollPane.setBounds(30, 90, 350, 300);
+        scrollPane.setBounds(30, 110, 350, 300);
         jPanelBot.add(scrollPane, BorderLayout.CENTER);
 
 
@@ -108,7 +115,7 @@ public class NewWindow extends JFrame implements ActionListener {
         textFieldAns.setWrapStyleWord(true);
 
         JScrollPane scrollPane1 = new JScrollPane(textFieldAns);
-        scrollPane1.setBounds(520, 90, 350, 300);
+        scrollPane1.setBounds(520, 110, 350, 300);
 
         jPanelBot.add(scrollPane1, BorderLayout.CENTER);
 
@@ -121,21 +128,21 @@ public class NewWindow extends JFrame implements ActionListener {
         jPanelBot.add(buttonTrans);
 
         buttonSoundEng = new RoundButton("",30, 30);
-        buttonSoundEng.setBounds(300, 50, 30, 30);
+        buttonSoundEng.setBounds(270, 60, 30, 30);
         buttonSoundEng.addActionListener(this);
         buttonSoundEng.setIcon(iconSound);
         buttonSoundEng.setToolTipText("Âm thanh của đoạn");
         jPanelBot.add(buttonSoundEng);
 
         buttonSoundVie = new RoundButton("",30, 30);
-        buttonSoundVie.setBounds(790, 50, 30, 30);
+        buttonSoundVie.setBounds(760, 60, 30, 30);
         buttonSoundVie.addActionListener(this);
         buttonSoundVie.setIcon(iconSound);
         buttonSoundVie.setToolTipText("Âm thanh của đoạn");
         jPanelBot.add(buttonSoundVie);
 
-        buttonAudio = new RoundButton("",25,25);
-        buttonAudio.setBounds(10, 5, 25, 25);
+        buttonAudio = new RoundButton("",100,100);
+        buttonAudio.setBounds(15, 15, 35, 35);
         buttonAudio.addActionListener(this);
         if (Setting.isPlaying) {
             buttonAudio.setIcon(iconAudioOff);
@@ -155,15 +162,16 @@ public class NewWindow extends JFrame implements ActionListener {
         jComboBox1.setRenderer(new IconComboBoxRenderer(engIcon, vieIcon));
         jComboBox2.setRenderer(new IconComboBoxRenderer(engIcon, vieIcon));
 
-        jComboBox1.setBounds(30,50,200,30);
-        jComboBox2.setBounds(520,50,200,30);
-        jComboBox3.setBounds(330,50,45,30);
-        jComboBox4.setBounds(820,50,45,30);
+        jComboBox1.setBounds(30,60,200,30);
+        jComboBox2.setBounds(520,60,200,30);
+        jComboBox3.setBounds(330,60,45,30);
+        jComboBox4.setBounds(820,60,45,30);
 
         jPanelBot.add(jComboBox1);
         jPanelBot.add(jComboBox2);
         jPanelBot.add(jComboBox3);
         jPanelBot.add(jComboBox4);
+        jPanelBot.add(label1);
     }
 
     void checkEngToVie()
