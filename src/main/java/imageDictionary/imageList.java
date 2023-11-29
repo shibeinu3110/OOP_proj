@@ -30,8 +30,4 @@ public class imageList {
     public static final ImageIcon iconHangman = new ImageIcon("src/main/java/UI/hangman.png");
     public static final ImageIcon quizIcon = new ImageIcon("src/main/java/UI/quiz.jpg");
     public static final ImageIcon hangIcon = new ImageIcon("src/main/java/UI/hangmanIc.png");
-    public static final ImageIcon transP = new ImageIcon("src/main/java/UI/transP.jpg");
-    public static final ImageIcon soundP = new ImageIcon("src/main/java/UI/soundP.jpg");
-    public static final ImageIcon gameP = new ImageIcon("src/main/java/UI/gameP.jpg");
-    public static final ImageIcon menuP = new ImageIcon("src/main/java/UI/menuP.jpg");
 }
