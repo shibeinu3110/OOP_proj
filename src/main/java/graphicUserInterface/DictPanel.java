@@ -547,7 +547,7 @@ public class DictPanel extends JFrame implements ListSelectionListener,
             Setting.isPlaying = !Setting.isPlaying;
         }
     }
-
+//helooheloo
 
     private void insertWord() {
         JTextField wordField = new JTextField(15);
