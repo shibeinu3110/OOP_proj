@@ -1,13 +1,9 @@
 package game.Hangman;
 
 import graphicUserInterface.ChooseGame;
-import graphicUserInterface.DictFinish;
 import graphicUserInterface.RoundButton;
 import graphicUserInterface.Setting;
-
-import javax.security.auth.login.FailedLoginException;
 import javax.swing.*;
-import javax.swing.border.BevelBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,23 +17,24 @@ import static imageDictionary.imageList.*;
 
 public class Hangman extends JFrame implements ActionListener {
     private JLabel hangingTree;
-    private JLabel background;
     private JLabel hiddenWordLabel;
 
     private JLabel resultLabel;
     private JLabel wordLabel;
     private String word;
 
-    private JButton[] letterButtons;
+    private final JButton[] letterButtons;
 
     private JDialog resultDialog;
     private int incorrectGuesses;
-    private Font NeueHaas;
-    private Font TanNimbus;
+    private final Font NeueHaas;
+    private final Font TanNimbus;
 
-    private JButton buttonAudio, buttonBack, restartButton;
+    private JButton buttonAudio;
+    private JButton buttonBack;
 
-    private JPanel jPanel;
+    private JLabel hintLabel;
+    private String hint;
 
 
 
@@ -48,7 +45,10 @@ public class Hangman extends JFrame implements ActionListener {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(null);
-        word = new Words().getRandomWord();
+        Words words = new Words();
+        int randomIndex = words.getRandomIndex();
+        word = words.getWord(randomIndex);
+        hint = words.getHint(randomIndex);
         letterButtons = new JButton[26];
         NeueHaas = Tools.createFont("src/main/java/game/Hangman/NeueHaasDisplayBlack.ttf");
         TanNimbus = Tools.createFont("src/main/java/game/Hangman/TANNIMBUS.ttf");
@@ -60,14 +60,14 @@ public class Hangman extends JFrame implements ActionListener {
 
     private void createUIComponents() {
         //background
-        background = Tools.loadImage("src/main/java/game/Hangman/gameBackground.png");
+        JLabel background = Tools.loadImage("src/main/java/game/Hangman/gameBackground.png");
         background.setBounds(0, 0, 900, 700);
 
         //hanging tree
         hangingTree = Tools.loadImage("src/main/java/game/Hangman/hangman0.png");
         hangingTree.setBounds(0, 0, hangingTree.getPreferredSize().width, hangingTree.getPreferredSize().height);
 
-        jPanel = new JPanel();
+        JPanel jPanel = new JPanel();
         jPanel.setBounds(800, 0, 100, 60);
         jPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         jPanel.setBackground(Color.white);
@@ -80,6 +80,13 @@ public class Hangman extends JFrame implements ActionListener {
         hiddenWordLabel.setFont(NeueHaas.deriveFont(34f));
         setBoundsHiddenWord();
         hiddenWordLabel.setForeground(new Color(10, 32, 62));
+
+        //hint
+        hintLabel = new JLabel(hint);
+        hintLabel.setFont(NeueHaas.deriveFont(11f));
+        hintLabel.setBounds(382, 40, 127, hintLabel.getPreferredSize().height);
+        hintLabel.setForeground(Color.BLACK);
+        hintLabel.setVisible(false);
 
 
         //letter buttons
@@ -100,7 +107,7 @@ public class Hangman extends JFrame implements ActionListener {
         }
 
         //restart button
-        restartButton = new JButton("restart");
+        JButton restartButton = new JButton("restart");
         restartButton.setForeground(Color.RED);
         restartButton.addActionListener(this);
         buttonPanel.add(restartButton);
@@ -123,6 +130,7 @@ public class Hangman extends JFrame implements ActionListener {
         jPanel.add(buttonAudio);
 
         getContentPane().add(jPanel);
+        getContentPane().add(hintLabel);
         getContentPane().add(hangingTree);
         getContentPane().add(buttonPanel);
         getContentPane().add(hiddenWordLabel);
@@ -194,6 +202,9 @@ public class Hangman extends JFrame implements ActionListener {
                 } else {
                     incorrectGuesses++;
                     Tools.updateImage(hangingTree, "src/main/java/game/Hangman/hangman" + incorrectGuesses + ".png");
+                    if(incorrectGuesses >= 2) {
+                        hintLabel.setVisible(true);
+                    }
                     hangingTree.setBounds(0, 0, hangingTree.getPreferredSize().width, hangingTree.getPreferredSize().height);
                     //lose
                     if (incorrectGuesses >= 6) {
@@ -248,13 +259,18 @@ public class Hangman extends JFrame implements ActionListener {
     }
 
     private void restartHangman() throws FileNotFoundException {
-        word = new Words().getRandomWord();
+        Words words = new Words();
+        int randomIndex = words.getRandomIndex();
+        word = words.getWord(randomIndex);
+        hint = words.getHint(randomIndex);
+        hintLabel.setText(hint);
         incorrectGuesses = 0;
         Tools.updateImage(hangingTree, "src/main/java/game/Hangman/hangman0.png");
         hangingTree.setBounds(0, 0, hangingTree.getPreferredSize().width, hangingTree.getPreferredSize().height);
         String hiddenWord = Tools.hideWords(word);
         hiddenWordLabel.setText(hiddenWord);
         setBoundsHiddenWord();
+        hintLabel.setVisible(false);
 
         for (JButton letterButton : letterButtons) {
             letterButton.setEnabled(true);
