@@ -1,57 +1,105 @@
 ﻿
-culture
-technology
-dream
-truck
-again
-limitless
-sense
-thing
-angel
-cherry
-bring
-superhuman
-regular
-welcome
-playground
-regular
-irregular
-breakfast
-white
-night
-touch
-sticker
-bring
-rainy
-favourite
-floor
-baddie
-paradise
-freeze
-black
-cloud
-tasty
-lemonade
-space
-parade
-yacht
-beauty
-misty
-vampire
-object
-ballad
-logical
-record
-strawberry
-sunday
-guitar
-ditto
-cookie
-vitamin
-skyscraper
-appreciate
-heart
-master
-dictionary
-english
-vietnamese
+Culture
+Diverse Traditions
+Technology
+Digital Advancements
+Dream
+Sleep Fantasy
+Truck
+Heavy Hauler
+Again
+Repeat Action
+Limitless
+Endless Boundaries
+Sense
+Perception
+Angel
+Heavenly Being
+Cherry
+Red Fruit
+Bring
+Transport
+Superhuman
+Enhanced Abilities
+Regular
+Routine
+Welcome
+Friendly Greeting
+Playground
+Recreation Area
+Irregular
+Not Conforming
+Breakfast
+Morning Meal
+White
+Color Shade
+Night
+Dark Hours
+Touch
+Contact
+Sticker
+Adhesive Label
+Bring
+Carry Along
+Rainy
+Wet Weather
+Favourite
+Preferred Choice
+Floor
+Ground Level
+Baddie
+Antagonist
+Paradise
+Ideal Haven
+Freeze
+Solidify
+Black
+Dark Color
+Cloud
+Airborne Vapor
+Tasty
+Delicious
+Lemonade
+Citrus Beverage
+Space
+Cosmic Area
+Parade
+Marching Display
+Yacht
+Luxury Boat
+Beauty
+Aesthetic Appeal
+Misty
+Hazy Atmosphere
+Vampire
+Bloodsucking Creature
+Object
+Physical Item
+Ballad
+Narrative Song
+Logical
+Reasonable
+Record
+Documented Instance
+Strawberry
+Red Berry
+Sunday
+Weekend Day
+Guitar
+Stringed Instrument
+Ditto
+Same Again
+Cookie
+Sweet Biscuit
+Vitamin
+Nutrient Supplement
+Skyscraper
+Tall Building
+Appreciate
+Value Highly
+Heart
+Organ of Love
+Master
+Expert
+Dictionary
+Word Reference
