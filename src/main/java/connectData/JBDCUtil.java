@@ -8,10 +8,10 @@ public class JBDCUtil {
 
     public static Connection getConnection() throws ClassNotFoundException, SQLException {
         Connection connection = null;
-        final String url = "jdbc:sqlite:D:/OOP_proj/dict.db";
+        final String url = "jdbc:sqlite:dict.db";
         try {
             // create a database connection
-            connection = DriverManager.getConnection("jdbc:sqlite:D:/OOP_proj/dict.db");
+            connection = DriverManager.getConnection("jdbc:sqlite:dict.db");
 
 
         } catch (SQLException e) {

@@ -550,22 +550,9 @@ public class DictPanel extends JFrame implements ListSelectionListener,
 //helooheloo
 
     private void insertWord() {
-        JTextField wordField = new JTextField(15);
-        JTextField detailField = new JTextField(15);
-
-        JPanel myPanel = new JPanel(new GridLayout(2, 2));
-        myPanel.add(new JLabel("Từ mới:"));
-        myPanel.add(wordField);
-        myPanel.add(Box.createHorizontalStrut(15)); // a spacer
-        myPanel.add(new JLabel("Nghĩa mới:"));
-        myPanel.add(detailField);
-
-        if (JOptionPane.showConfirmDialog(null, myPanel, "Thêm từ",
-                JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
-            WordDAO.getInstance().addWord(wordField.getText(), detailField.getText());
-            // JDBCStatement.sortData();
-            this.loadData();
-        }
+        this.dispose();
+        new AddWordPanel();
+        this.loadData();
     }
 
     private void updateWord(String selectedWord) {

@@ -15,7 +15,7 @@ import java.awt.event.MouseListener;
 import static imageDictionary.imageList.*;
 
 
-public class Menu extends JFrame implements ActionListener {
+public class Menu extends JFrame implements BaseAbstractClass, ActionListener {
 
     JButton buttonDictPanel, buttonNW, buttonGame, buttonSetting, buttonExit, buttonAudio;
 
@@ -48,7 +48,7 @@ public class Menu extends JFrame implements ActionListener {
         jPanelLeft.setBackground(Color.gray);
 
         this.add(jPanelLeft);
-        addToLeft();
+        addToTop();
 
         jPanelRight = new JPanel();
         jPanelRight.setBounds(0,150,900,550);
@@ -56,11 +56,12 @@ public class Menu extends JFrame implements ActionListener {
         jPanelRight.setBackground(Color.blue);
 
         this.add(jPanelRight);
-        addToRight();
+        addToBot();
 
     }
 
-    void addToLeft() {
+    @Override
+    public void addToTop() {
         JLabel label1 = new JLabel();
         ImageIcon imageIcon1 = new ImageIcon(menuP.getImage());
         label1.setIcon(imageIcon1);
@@ -68,7 +69,8 @@ public class Menu extends JFrame implements ActionListener {
         jPanelLeft.add(label1);
     }
 
-    void addToRight() {
+    @Override
+    public void addToBot() {
         JLabel label1 = new JLabel();
         ImageIcon imageIcon1 = new ImageIcon(bg5.getImage());
         label1.setIcon(imageIcon1);
@@ -128,7 +130,6 @@ public class Menu extends JFrame implements ActionListener {
         jPanelRight.add(label1);
 
     }
-
     public void actionPerformed(ActionEvent e) {
         if(e.getSource().equals(buttonDictPanel)) {
             sound.SoundPlay.playSoundNonReset("sound/click.wav");
@@ -173,6 +174,5 @@ public class Menu extends JFrame implements ActionListener {
             Setting.isPlaying = !Setting.isPlaying;
         }
     }
-
 }
 

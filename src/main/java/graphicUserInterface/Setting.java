@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 import static imageDictionary.imageList.*;
 
 
-public class Setting extends JFrame implements ActionListener {
+public class Setting extends JFrame implements BaseAbstractClass, ActionListener {
     JPanel jPanelTop, jPanelBot;
 
     JButton buttonBack, buttonAudio;
@@ -77,16 +77,16 @@ public class Setting extends JFrame implements ActionListener {
 
 
     }
-
-    void addToTop() {
+    @Override
+    public void addToTop() {
         JLabel label1 = new JLabel();
         ImageIcon imageIcon1 = new ImageIcon(soundP.getImage());
         label1.setIcon(imageIcon1);
         label1.setBounds(0,0,900,150);
         jPanelTop.add(label1);
     }
-
-    void addToBot() {
+    @Override
+    public void addToBot() {
         JLabel label1 = new JLabel();
         ImageIcon imageIcon1 = new ImageIcon(bg5.getImage());
         label1.setIcon(imageIcon1);

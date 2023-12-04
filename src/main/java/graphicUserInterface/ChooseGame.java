@@ -11,7 +11,7 @@ import java.io.IOException;
 
 import static imageDictionary.imageList.*;
 
-public class ChooseGame extends JFrame implements ActionListener {
+public class ChooseGame extends JFrame implements BaseAbstractClass, ActionListener {
     JButton buttonGame, buttonQuiz, buttonBack, buttonAudio;
 
     JPanel jPanelRight, jPanelLeft;
@@ -43,7 +43,7 @@ public class ChooseGame extends JFrame implements ActionListener {
         jPanelLeft.setBackground(Color.gray);
 
         this.add(jPanelLeft);
-        addToLeft();
+        addToTop();
 
         jPanelRight = new JPanel();
         jPanelRight.setBounds(0,150,900,550);
@@ -51,10 +51,10 @@ public class ChooseGame extends JFrame implements ActionListener {
         jPanelRight.setBackground(Color.blue);
 
         this.add(jPanelRight);
-        addToRight();
+        addToBot();
     }
-
-    void addToLeft() {
+    @Override
+    public void addToTop() {
         JLabel label1 = new JLabel();
         ImageIcon imageIcon1 = new ImageIcon(gameP.getImage());
         label1.setIcon(imageIcon1);
@@ -62,7 +62,8 @@ public class ChooseGame extends JFrame implements ActionListener {
         jPanelLeft.add(label1);
     }
 
-    void addToRight() {
+    @Override
+    public void addToBot() {
         JLabel label1 = new JLabel();
         ImageIcon imageIcon1 = new ImageIcon(bg5.getImage());
         label1.setIcon(imageIcon1);

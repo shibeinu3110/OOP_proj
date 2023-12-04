@@ -84,7 +84,7 @@ public class Hangman extends JFrame implements ActionListener {
         //hint
         hintLabel = new JLabel(hint);
         hintLabel.setFont(NeueHaas.deriveFont(11f));
-        hintLabel.setBounds(382, 40, 127, hintLabel.getPreferredSize().height);
+        hintLabel.setBounds(382, 50, 127, hintLabel.getPreferredSize().height);
         hintLabel.setForeground(Color.BLACK);
         hintLabel.setVisible(false);
 

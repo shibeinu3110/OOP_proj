@@ -14,7 +14,7 @@ import java.awt.event.ActionListener;
 import static imageDictionary.imageList.*;
 
 
-public class NewWindow extends JFrame implements ActionListener {
+public class NewWindow extends JFrame implements BaseAbstractClass, ActionListener {
     private final int WIDTH_WINDOW = 900;
     private final int HEIGHT_WINDOW = 700;
     private DictPanel dictionaryPanel;
@@ -71,8 +71,8 @@ public class NewWindow extends JFrame implements ActionListener {
         this.add(jPanelBot);
         addToBot();
     }
-
-    void addToTop()
+    @Override
+    public void addToTop()
     {
         JLabel label1 = new JLabel();
         ImageIcon imageIcon1 = new ImageIcon(transP.getImage());
@@ -80,8 +80,8 @@ public class NewWindow extends JFrame implements ActionListener {
         label1.setBounds(0,0,900,150);
         jPanelTop.add(label1);
     }
-
-    void addToBot()
+    @Override
+    public void addToBot()
     {
         JLabel label1 = new JLabel();
         ImageIcon imageIcon1 = new ImageIcon(bg5.getImage());
