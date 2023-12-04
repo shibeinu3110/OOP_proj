@@ -3,19 +3,17 @@ package game.Quiz;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class CorrectAnswerListenerB implements ActionListener {
-    private final MCQ mcq;
-    public CorrectAnswerListenerB(MCQ mcq) {
-        this.mcq = mcq;
-    }
+public class CorrectAnswerListenerB extends CorrectAnswerListener implements ActionListener {
 
+    public CorrectAnswerListenerB(MCQ mcq) {
+        super(mcq);
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
-        mcq.setPlayersAnswer("B");
-        mcq.checkAnswer(mcq.getPlayersAnswer());
-        mcq.setResultVisibility();
-        mcq.aButton.setEnabled(false);
-        mcq.cButton.setEnabled(false);
-        mcq.dButton.setEnabled(false);
+        super.setAnswer("B");
+        super.actionPerformed(e);
+        super.getMcq().aButton.setEnabled(false);
+        super.getMcq().cButton.setEnabled(false);
+        super.getMcq().dButton.setEnabled(false);
     }
 }
