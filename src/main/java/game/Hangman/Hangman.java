@@ -92,8 +92,9 @@ public class Hangman extends JFrame implements ActionListener {
         //letter buttons
         GridLayout gridLayout = new GridLayout(4, 7);
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setBounds(450, 164, 420, 240 );
+        buttonPanel.setBounds(450, 120, 420, 240 );
         buttonPanel.setLayout(gridLayout);
+        buttonPanel.setBackground(Color.WHITE);
 
 
         for(char c = 'A'; c <= 'Z'; c++) {
@@ -134,7 +135,6 @@ public class Hangman extends JFrame implements ActionListener {
         getContentPane().add(hangingTree);
         getContentPane().add(buttonPanel);
         getContentPane().add(hiddenWordLabel);
-
         getContentPane().add(background);
 
 
