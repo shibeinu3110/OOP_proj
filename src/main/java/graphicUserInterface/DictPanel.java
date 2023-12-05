@@ -1,6 +1,7 @@
 package graphicUserInterface;
 
-import connectData.JBDCUtil;
+
+import connectData.Trie;
 import connectData.WordDAO;
 import model.DictionaryManagement;
 import model.Word;
@@ -42,6 +43,7 @@ public class DictPanel extends JFrame implements ListSelectionListener,
     JScrollPane textScrollPane;
     private ArrayList<Word> listDict;
     int countMouse = 0;
+    ArrayList<String> trieResults;
 
     private final int WIDTH_WINDOW = 900;
     private final int HEIGHT_WINDOW = 700;
@@ -132,6 +134,7 @@ public class DictPanel extends JFrame implements ListSelectionListener,
         listDict = dictionaryManagement.getDictionary().getData();
         for (int i = 0; i < listDict.size(); i++) {
             listModelWord.addElement(listDict.get(i).getEngString());
+            Trie.insert(listDict.get(i).getEngString());
         }
         for (int i = 0; i < dictionaryManagement.getDictionary().getRecent().size(); i++) {
             listModelRecent.addElement(dictionaryManagement.getDictionary().getRecent().get(i));
@@ -443,8 +446,13 @@ public class DictPanel extends JFrame implements ListSelectionListener,
             listModelWord.removeElement(str);
             listModelMark.removeElement(str);
             listModelRecent.removeElement(str);
+            //Trie.delete(str);
+            if (Trie.search(str).contains(str)) {
+                Trie.delete(str);
+            }
             this.resultList.removeElement(str);
             WordDAO.getInstance().deleteWord(str);
+
         }
     }
 
@@ -489,39 +497,13 @@ public class DictPanel extends JFrame implements ListSelectionListener,
             sound.SoundPlay.playSoundNonReset("sound/click.wav");
             this.dispose();
             DictFinish dictFinish = new DictFinish();
-        } /*else if (e.getSource().equals(btnDown)) {
-            selectDownWord();
-        } else if (e.getSource().equals(btnPronounce)) {
-            System.out.println("PA");
-            VoiceManager voiceMan;
-            Voice voice;
-
-            String speakString = getActiveList().getSelectedValue(); // String word
-//			 System.setProperty("mbrola.base", "mbrola");
-            System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
-            voiceMan = VoiceManager.getInstance();
-            voice = voiceMan.getVoice("kevin16");
-            voice.allocate();
-
-            // try {
-            voice.speak(speakString);
-            // } catch (Exception exc) {
-            // exc.printStackTrace();
-            // }
-
-        }*/ else if (e.getSource().equals(buttonSearch)) {
+        }  else if (e.getSource().equals(buttonSearch)) {
             sound.SoundPlay.playSoundNonReset("sound/click.wav");
             submitSearch();
         } else if (e.getSource().equals(buttonStar)) {
             sound.SoundPlay.playSoundNonReset("sound/click.wav");
             String str = getSelectedWord();
-            /*if (btnMark.getIcon().equals(IconItem.iconStarred)) {
-                btnMark.setIcon(IconItem.iconStar);
-                removeFromListMark(str);
-            } else {
-                btnMark.setIcon(IconItem.iconStarred);
-                addToListMark(str);
-            }*/
+
 
         } else if (e.getSource().equals(buttonSoundUK)) {
             sound.SoundPlay.playSoundNonReset("sound/click.wav");
@@ -547,7 +529,7 @@ public class DictPanel extends JFrame implements ListSelectionListener,
             Setting.isPlaying = !Setting.isPlaying;
         }
     }
-//helooheloo
+
 
     private void insertWord() {
         this.dispose();
@@ -556,7 +538,7 @@ public class DictPanel extends JFrame implements ListSelectionListener,
     }
 
     private void updateWord(String selectedWord) {
-        JTextField wordField = new JTextField(15);
+        /*JTextField wordField = new JTextField(15);
         wordField.setText(selectedWord);
         wordField.setEditable(false);
         JTextField detailField = new JTextField(15);
@@ -574,7 +556,27 @@ public class DictPanel extends JFrame implements ListSelectionListener,
             WordDAO.getInstance().updateWord(wordField.getText(), detailField.getText());
             textPane.setText(detailField.getText());
             this.loadData();
+        }*/
+        /*this.dispose();
+        String meaning ;
+        new ModifyWordPanel(selectedWord);
+        this.loadData();*/
+        Word selectedWordObj = null;
+        for (Word word : listDict) {
+            if (word.getEngString().equals(selectedWord)) {
+                selectedWordObj = word;
+                break;
+            }
         }
+
+        // Kiểm tra nếu từ được chọn tồn tại trong danh sách
+        // Lấy nghĩa của từ
+        String vieString = selectedWordObj.getVieString();
+
+        // Hiển thị nghĩa của từ trong ModifyWordPanel hoặc nơi khác cần thiết
+        new ModifyWordPanel(selectedWord, vieString);
+        this.dispose();
+        this.loadData();
     }
 
     private void submitSearch() {
@@ -610,19 +612,25 @@ public class DictPanel extends JFrame implements ListSelectionListener,
                     listWord.setSelectedIndex(0);
                     showMeaning(listDict, listWord.getSelectedValue());
                 } else {
-                    listWord.setModel(resultList);
+                    listWord.setModel((resultList));
                     textPane.setText("Not Found");
                 }
-
             }
         });
     }
 
     public DefaultListModel<String> resultSearch(String keyword, DefaultListModel<String> obj) {
         DefaultListModel<String> rsList = new DefaultListModel<String>();
+        trieResults = Trie.search(keyword);
         for (int i = 0; i < obj.size(); i++) {
             if (obj.get(i).indexOf(keyword) == 0) {
                 rsList.addElement(obj.get(i));
+            }
+        }
+        for (String result : trieResults) {
+            //rsList.addElement(result);
+            if (!rsList.contains(result)) {
+                rsList.addElement(result);
             }
         }
         return rsList;

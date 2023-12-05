@@ -1,13 +1,11 @@
 package graphicUserInterface;
 
+import connectData.Trie;
 import connectData.WordDAO;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
+import java.awt.event.*;
 
 import static imageDictionary.imageList.*;
 
@@ -20,7 +18,8 @@ public class AddWordPanel extends JFrame implements BaseAbstractClass, ActionLis
     private final int HEIGHT_WINDOW = 700;
     String word, meaning;
     JComboBox jComboBoxType;
-    JTextField wordField,ipaField,meaningField;
+    JTextField wordField,ipaField;
+    JTextArea meaningField;
     public AddWordPanel() {
         super("Dictionary EV ");            //set title
 
@@ -52,7 +51,7 @@ public class AddWordPanel extends JFrame implements BaseAbstractClass, ActionLis
     @Override
     public void addToTop() {
         JLabel label1 = new JLabel();
-        ImageIcon imageIcon1 = new ImageIcon(menuP.getImage());
+        ImageIcon imageIcon1 = new ImageIcon(addP.getImage());
         label1.setIcon(imageIcon1);
         label1.setBounds(0,0,900,150);
         jPanelLeft.add(label1);
@@ -60,25 +59,11 @@ public class AddWordPanel extends JFrame implements BaseAbstractClass, ActionLis
 
     @Override
     public void addToBot() {
-        /*JTextField wordField = new JTextField(15);
-        JTextField detailField = new JTextField(15);
 
-        JPanel myPanel = new JPanel(new GridLayout(2, 2));
-        myPanel.add(new JLabel("Từ mới:"));
-        myPanel.add(wordField);
-        myPanel.add(Box.createHorizontalStrut(15)); // a spacer
-        myPanel.add(new JLabel("Nghĩa mới:"));
-        myPanel.add(detailField);
-
-        if (JOptionPane.showConfirmDialog(null, myPanel, "Thêm từ",
-                JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
-            WordDAO.getInstance().addWord(wordField.getText(), detailField.getText());
-            // JDBCStatement.sortData()WordDAO.getInstance().addWord();
-        }*/
 
         /**word field*/
         wordField = new JTextField("Nhập từ muốn thêm ở đây");
-        wordField.setBounds(50,50,250,30);
+        wordField.setBounds(320,140,250,40);
         wordField.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
@@ -90,7 +75,7 @@ public class AddWordPanel extends JFrame implements BaseAbstractClass, ActionLis
             public void focusLost(FocusEvent e) {
                 // Kiểm tra nếu trường văn bản trống rỗng, thì đặt lại văn bản mặc định
                 if (wordField.getText().isEmpty()) {
-                    wordField.setText("Nhập vào đây");
+                    wordField.setText("Chưa nhập từ");
                 }
             }
         });
@@ -98,7 +83,7 @@ public class AddWordPanel extends JFrame implements BaseAbstractClass, ActionLis
 
         /**ipa field*/
         ipaField = new JTextField("Nhập IPA của từ");
-        ipaField.setBounds(50,90,250,30);
+        ipaField.setBounds(320,210,250,40);
         ipaField.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
@@ -110,7 +95,7 @@ public class AddWordPanel extends JFrame implements BaseAbstractClass, ActionLis
             public void focusLost(FocusEvent e) {
                 // Kiểm tra nếu trường văn bản trống rỗng, thì đặt lại văn bản mặc định
                 if (ipaField.getText().isEmpty()) {
-                    ipaField.setText("Nhập vào đây");
+                    ipaField.setText("Từ hiện tại chưa có IPA");
                 }
             }
         });
@@ -118,32 +103,71 @@ public class AddWordPanel extends JFrame implements BaseAbstractClass, ActionLis
 
         /**type word selection*/
         jComboBoxType = new JComboBox<>(type);
-        jComboBoxType.setBounds(50,140,250,30);
+        jComboBoxType.setBounds(320,275,250,40);
         jPanelRight.add(jComboBoxType);
 
         /**meaning field*/
-        meaningField = new JTextField("Nhập nghĩa của từ muốn thêm");
-        meaningField.setBounds(50,180,250,30);
+        meaningField = new JTextArea("Nhập nghĩa của từ muốn thêm");
+        meaningField.setBounds(320,340,450,60);
+        //meaningField.setHorizontalAlignment(JTextField.LEFT);
+        //meaningField.setVerticalAlignment(JTextField.TOP);
+        meaningField.setLineWrap(true);
+        meaningField.setWrapStyleWord(true);
         meaningField.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
                 // Xóa nội dung khi trường văn bản nhận focus
-                meaningField.setText("");
+                meaningField.setText(" ");
             }
 
             @Override
             public void focusLost(FocusEvent e) {
                 // Kiểm tra nếu trường văn bản trống rỗng, thì đặt lại văn bản mặc định
                 if (meaningField.getText().isEmpty()) {
-                    meaningField.setText("Nhập vào đây");
+                    meaningField.setText(" Từ hiện tại chưa có nghĩa ");
                 }
             }
         });
-        jPanelRight.add(meaningField);
 
+        meaningField.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                // Do nothing
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    // Insert a tab character when Enter key is pressed
+                    meaningField.append("\n\t- ");
+                    // Consume the event to prevent a newline from being inserted
+                    e.consume();
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                // Do nothing
+            }
+        });
+        meaningField.setLineWrap(true);
+        meaningField.setWrapStyleWord(true);
+
+        JScrollPane scrollPane = new JScrollPane(meaningField);
+        scrollPane.setBounds(320, 340, 450, 60);
+
+
+        wordField.setFont(new Font("Arial", Font.BOLD, 14));
+        ipaField.setFont(new Font("Arial", Font.BOLD, 14));
+        jComboBoxType.setFont(new Font("Arial", Font.BOLD, 14));
+        meaningField.setFont(new Font("Arial", Font.BOLD, 14));
+
+
+        //jPanelRight.add(meaningField);
+        jPanelRight.add(scrollPane, BorderLayout.CENTER);
 
         buttonAdd = new RoundButton("Thêm từ",20,20);
-        buttonAdd.setBounds(500, 300, 100, 30);
+        buttonAdd.setBounds(500, 440, 100, 30);
         buttonAdd.addActionListener(this);
         jPanelRight.add(buttonAdd);
 
@@ -168,7 +192,7 @@ public class AddWordPanel extends JFrame implements BaseAbstractClass, ActionLis
         jPanelRight.add(buttonBack);
 
         JLabel label1 = new JLabel();
-        ImageIcon imageIcon1 = new ImageIcon(bg5.getImage());
+        ImageIcon imageIcon1 = new ImageIcon(addP2.getImage());
         label1.setIcon(imageIcon1);
         label1.setBounds(0,0,900,550);
         jPanelRight.add(label1);
@@ -189,6 +213,7 @@ public class AddWordPanel extends JFrame implements BaseAbstractClass, ActionLis
             meaning = "<C><F><I><N><Q>@" + word + " " + ipaField.getText() +
                     "<br />*" + jComboBoxType.getSelectedItem() + "<br />-" +  meaningField.getText() + "</Q></N></I></F></C>";
             WordDAO.getInstance().addWord(word, meaning);
+            //Trie.insert(word);
             JOptionPane.showMessageDialog(this, "Từ đã được thêm thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         }
         if(e.getSource().equals(buttonAudio)) {

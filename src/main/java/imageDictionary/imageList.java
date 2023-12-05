@@ -34,4 +34,8 @@ public class imageList {
     public static final ImageIcon soundP = new ImageIcon("src/main/java/UI/soundP.jpg");
     public static final ImageIcon transP = new ImageIcon("src/main/java/UI/transP.jpg");
     public static final ImageIcon menuP = new ImageIcon("src/main/java/UI/menuP.jpg");
+    public static final ImageIcon addP = new ImageIcon("src/main/java/UI/addP.jpg");
+    public static final ImageIcon addP2 = new ImageIcon("src/main/java/UI/addP2.jpg");
+    public static final ImageIcon modifyP = new ImageIcon("src/main/java/UI/modifyP.jpg");
+    public static final ImageIcon modifyP2 = new ImageIcon("src/main/java/UI/modifyP2.jpg");
 }

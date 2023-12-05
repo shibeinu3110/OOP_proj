@@ -112,7 +112,8 @@ public class WordDAO implements DAO<Word> {
             statement.executeUpdate();
 
             JBDCUtil.closeConnection(c);
-
+            /***/
+            Trie.insert(engString);
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -174,14 +175,39 @@ public class WordDAO implements DAO<Word> {
 
     @Override
     public void updateWord(String word, String detail) {
-        Connection con;
+        /*Connection con;
         String sql = "UPDATE DictionaryEV SET detail='" + detail + "' WHERE word='" + word + "'";
         try {
             con = JBDCUtil.getConnection();
             java.sql.Statement stmt = con.createStatement();
             stmt.executeUpdate(sql);
+            JBDCUtil.closeConnection(con);
         } catch (ClassNotFoundException | SQLException e) {
             // TODO Auto-generated catch block
+            e.printStackTrace();
+        }*/
+        Connection con = null;
+        String sql = "UPDATE DictionaryEV SET detail=? WHERE word=?";
+        try {
+            con = JBDCUtil.getConnection();
+            con.setAutoCommit(false); // Bắt đầu giao dịch
+
+            try (PreparedStatement pstmt = con.prepareStatement(sql)) {
+                pstmt.setString(1, detail);
+                pstmt.setString(2, word);
+                pstmt.executeUpdate();
+            }
+
+            con.commit(); // Chấp nhận giao dịch thành công
+            JBDCUtil.closeConnection(con);
+        } catch (ClassNotFoundException | SQLException e) {
+            try {
+                if (con != null) {
+                    con.rollback(); // Quay lại trạng thái trước khi bắt đầu giao dịch
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
             e.printStackTrace();
         }
     }
@@ -194,6 +220,8 @@ public class WordDAO implements DAO<Word> {
             con = JBDCUtil.getConnection();
             PreparedStatement pstmt = con.prepareStatement(sql);
             pstmt.executeUpdate();
+            JBDCUtil.closeConnection(con);
+            Trie.delete(word);
         } catch (ClassNotFoundException | SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -208,6 +236,7 @@ public class WordDAO implements DAO<Word> {
             con = JBDCUtil.getConnection();
             PreparedStatement pstmt = con.prepareStatement(sql);
             pstmt.executeUpdate();
+            JBDCUtil.closeConnection(con);
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
@@ -221,6 +250,7 @@ public class WordDAO implements DAO<Word> {
             con = JBDCUtil.getConnection();
             PreparedStatement pstmt = con.prepareStatement(sql);
             pstmt.executeUpdate();
+            JBDCUtil.closeConnection(con);
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
