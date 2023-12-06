@@ -31,7 +31,7 @@ public class Hangman extends JFrame implements ActionListener {
     private final Font TanNimbus;
 
     private JButton buttonAudio;
-    private JButton buttonBack;
+    private JButton buttonBack, restartButton;
 
     private JLabel hintLabel;
     private String hint;
@@ -68,7 +68,7 @@ public class Hangman extends JFrame implements ActionListener {
         hangingTree.setBounds(0, 0, hangingTree.getPreferredSize().width, hangingTree.getPreferredSize().height);
 
         JPanel jPanel = new JPanel();
-        jPanel.setBounds(800, 0, 100, 60);
+        jPanel.setBounds(680, 0, 220, 60);
         jPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         jPanel.setBackground(Color.white);
         jPanel.setOpaque(true);
@@ -107,18 +107,6 @@ public class Hangman extends JFrame implements ActionListener {
             buttonPanel.add(letterButtons[currentIndex]);
         }
 
-        //restart button
-        JButton restartButton = new JButton("restart");
-        restartButton.setForeground(Color.RED);
-        restartButton.addActionListener(this);
-        buttonPanel.add(restartButton);
-
-
-        buttonBack = new JButton("quit");
-        buttonBack.setForeground(Color.RED);
-        buttonBack.addActionListener(this);
-        buttonPanel.add(buttonBack);
-
         buttonAudio = new RoundButton("",20,20);
         buttonAudio.addActionListener(this);
         if (Setting.isPlaying) {
@@ -129,6 +117,21 @@ public class Hangman extends JFrame implements ActionListener {
             buttonAudio.setToolTipText("Nhấn vào đây để tắt nhạc");
         }
         jPanel.add(buttonAudio);
+
+        //restart button
+        restartButton = new RoundButton("", 20,20);
+        restartButton.addActionListener(this);
+        restartButton.setIcon(restart);
+        restartButton.setToolTipText("Nhấn đề chơi lại");
+        jPanel.add(restartButton);
+
+
+        buttonBack = new RoundButton("", 20,20);
+        buttonBack.addActionListener(this);
+        buttonBack.setIcon(iconBack);
+        buttonBack.setToolTipText("Nhấn để quay lại");
+        jPanel.add(buttonBack);
+
 
         getContentPane().add(jPanel);
         getContentPane().add(hintLabel);
@@ -170,9 +173,20 @@ public class Hangman extends JFrame implements ActionListener {
             this.dispose();
             new ChooseGame();
         }
+        else if(e.getSource().equals(restartButton))
+        {
+            sound.SoundPlay.playSoundNonReset("sound/click.wav");
+            try {
+                restartHangman();
+            } catch (FileNotFoundException ex) {
+                throw new RuntimeException();
+            }
+            resultDialog.setVisible(false);
+        }
         else {
             String command = e.getActionCommand();
-            if (Objects.equals(command, "restart") || Objects.equals(command, "RESTART")) {
+            if (Objects.equals(command, "RESTART")) {
+                sound.SoundPlay.playSoundNonReset("sound/click.wav");
                 try {
                     restartHangman();
                 } catch (FileNotFoundException ex) {
@@ -180,6 +194,7 @@ public class Hangman extends JFrame implements ActionListener {
                 }
                 resultDialog.setVisible(false);
             } else {
+                sound.SoundPlay.playSoundNonReset("sound/click.wav");
                 JButton button = (JButton) e.getSource();
                 button.setEnabled(false);
 
@@ -202,7 +217,7 @@ public class Hangman extends JFrame implements ActionListener {
                 } else {
                     incorrectGuesses++;
                     Tools.updateImage(hangingTree, "src/main/java/game/Hangman/hangman" + incorrectGuesses + ".png");
-                    if(incorrectGuesses >= 2) {
+                    if (incorrectGuesses >= 2) {
                         hintLabel.setVisible(true);
                     }
                     hangingTree.setBounds(0, 0, hangingTree.getPreferredSize().width, hangingTree.getPreferredSize().height);
@@ -215,7 +230,6 @@ public class Hangman extends JFrame implements ActionListener {
                 wordLabel.setText("The word is " + word);
             }
         }
-
     }
 
     private void createResultDialog() {
