@@ -31,11 +31,8 @@ public class Syantonym extends JFrame implements BaseAbstractClass, ActionListen
 
     //boolean engToVie;
     //String[] option = {"Tiếng Anh -- English", "Tiếng Việt -- Vietnamese"};
-    String[] option1 = {"Từ đồng nghĩa" , "Từ trái nghĩa"};
 
-    String[] option3 = {"UK", "US"};
-    String[] option4 = {"US", "UK"};
-    JComboBox jComboBox2, jComboBox3, jComboBox4;
+
 
     public Syantonym() {
         super("Dictionary EV ");            //set title
@@ -106,7 +103,7 @@ public class Syantonym extends JFrame implements BaseAbstractClass, ActionListen
         textFieldQues.setWrapStyleWord(true);
 
         JScrollPane scrollPane = new JScrollPane(textFieldQues);
-        scrollPane.setBounds(30, 110, 350, 300);
+        scrollPane.setBounds(30, 80, 350, 350);
         jPanelBot.add(scrollPane, BorderLayout.CENTER);
 
 
@@ -117,7 +114,7 @@ public class Syantonym extends JFrame implements BaseAbstractClass, ActionListen
         textFieldAns.setWrapStyleWord(true);
 
         JScrollPane scrollPane1 = new JScrollPane(textFieldAns);
-        scrollPane1.setBounds(520, 110, 350, 300);
+        scrollPane1.setBounds(520, 80, 350, 350);
 
         jPanelBot.add(scrollPane1, BorderLayout.CENTER);
 
@@ -128,20 +125,6 @@ public class Syantonym extends JFrame implements BaseAbstractClass, ActionListen
         buttonTrans.addActionListener(this);
         buttonTrans.setToolTipText("Tìm từ");
         jPanelBot.add(buttonTrans);
-
-        buttonSoundEng = new RoundButton("",30, 30);
-        buttonSoundEng.setBounds(270, 60, 30, 30);
-        buttonSoundEng.addActionListener(this);
-        buttonSoundEng.setIcon(iconSound);
-        buttonSoundEng.setToolTipText("Âm thanh của từ");
-        jPanelBot.add(buttonSoundEng);
-
-        buttonSoundVie = new RoundButton("",30, 30);
-        buttonSoundVie.setBounds(760, 60, 30, 30);
-        buttonSoundVie.addActionListener(this);
-        buttonSoundVie.setIcon(iconSound);
-        buttonSoundVie.setToolTipText("Âm thanh của từ");
-        jPanelBot.add(buttonSoundVie);
 
         buttonAudio = new RoundButton("",100,100);
         buttonAudio.setBounds(15, 15, 35, 35);
@@ -155,18 +138,6 @@ public class Syantonym extends JFrame implements BaseAbstractClass, ActionListen
         }
         jPanelBot.add(buttonAudio);
 
-        jComboBox2 = new JComboBox(option1);
-        jComboBox3 = new JComboBox(option3);
-        jComboBox4 = new JComboBox(option4);
-
-
-        jComboBox2.setBounds(520,60,200,30);
-        jComboBox3.setBounds(330,60,45,30);
-        jComboBox4.setBounds(820,60,45,30);
-
-        jPanelBot.add(jComboBox2);
-        jPanelBot.add(jComboBox3);
-        jPanelBot.add(jComboBox4);
         jPanelBot.add(label1);
     }
 
@@ -177,41 +148,19 @@ public class Syantonym extends JFrame implements BaseAbstractClass, ActionListen
         {
             sound.SoundPlay.playSoundNonReset("sound/click.wav");
             this.dispose();
-            DictFinish dictFinish = new DictFinish();
+            new DictFinish();
         }
         if(e.getSource().equals(buttonTrans))
         {
             sound.SoundPlay.playSoundNonReset("sound/click.wav");
-            if(jComboBox2.getSelectedItem().equals("Từ đồng nghĩa")) {
-                Word word = new Word();
-                word.setEngString(this.textFieldQues.getText());
-                try {
-                    ArrayList<String> listSynonym = new ArrayList<>(SynonymAPI.getSynonym(word));
-                    StringBuilder ans = new StringBuilder();
-                    for (String s: listSynonym) {
-                        ans.append(s);
-                    }
-                    this.textFieldAns.setText(String.valueOf(ans));
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
+            try {
+                ArrayList<String> ans = SynonymAPI.getSynonym(this.textFieldQues.getText());
+                String s = SynonymAPI.convert(ans);
+                this.textFieldAns.setText(s);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
             }
-        }
-        if (e.getSource().equals(buttonSoundEng)) {
-            sound.SoundPlay.playSoundNonReset("sound/click.wav");
-            if(jComboBox3.getSelectedItem().equals("UK")) {
-                SpeechText.playSoundGoogleTranslateEnUKToVi(this.textFieldQues.getText());
-            } else {
-                SpeechText.playSoundGoogleTranslateEnUSToVi(this.textFieldQues.getText());
-            }
-        }
-        if (e.getSource().equals(buttonSoundVie)) {
-            sound.SoundPlay.playSoundNonReset("sound/click.wav");
-            if(jComboBox4.getSelectedItem().equals("UK")) {
-                SpeechText.playSoundGoogleTranslateEnUKToVi(this.textFieldAns.getText());
-            } else {
-                SpeechText.playSoundGoogleTranslateEnUSToVi(this.textFieldAns.getText());
-            }
+
         }
         if (e.getSource().equals(buttonAudio)) {
             sound.SoundPlay.playSoundNonReset("sound/click.wav");

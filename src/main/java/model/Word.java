@@ -6,7 +6,6 @@ public class Word {
     private String engString;
     private String vieString;
 
-    private ArrayList<String> synonyms = new ArrayList<>();
 
     public Word() {
 
@@ -41,11 +40,4 @@ public class Word {
         this.vieString = vieString;
     }
 
-    public ArrayList<String> getSynonyms() {
-        return synonyms;
-    }
-
-    public void setSynonyms(ArrayList<String> synonyms) {
-        this.synonyms = synonyms;
-    }
 }
