@@ -17,7 +17,7 @@ import static imageDictionary.imageList.*;
 
 public class Menu extends JFrame implements BaseAbstractClass, ActionListener {
 
-    JButton buttonDictPanel, buttonNW, buttonGame, buttonSetting, buttonExit, buttonAudio;
+    JButton buttonDictPanel, buttonNW, buttonGame, buttonSetting, buttonExit, buttonAudio, buttonSyantonym;
 
     JPanel jPanelRight, jPanelLeft;
 
@@ -101,8 +101,15 @@ public class Menu extends JFrame implements BaseAbstractClass, ActionListener {
         buttonGame.setIcon(iconGame);
         jPanelRight.add(buttonGame);
 
+        buttonSyantonym = new RoundButton("Từ đồng/trái nghĩa",20,20);
+        buttonSyantonym.setBounds(350, 320, 200, 60);
+        buttonSyantonym.addActionListener(this);
+        buttonSyantonym.setToolTipText("Tìm từ đồng/trái nghĩa");
+        buttonSyantonym.setIcon(iconGame);
+        jPanelRight.add(buttonSyantonym);
+
         buttonSetting = new RoundButton("Cài đặt",20,20);
-        buttonSetting.setBounds(350, 320, 200, 60);
+        buttonSetting.setBounds(350, 400, 200, 60);
         buttonSetting.addActionListener(this);
         buttonSetting.setToolTipText("Cài đặt");
         buttonSetting.setIcon(iconSetting);
@@ -154,6 +161,11 @@ public class Menu extends JFrame implements BaseAbstractClass, ActionListener {
             sound.SoundPlay.playSoundNonReset("sound/click.wav");
             this.dispose();
             new ChooseGame();
+        }
+        if(e.getSource().equals(buttonSyantonym)) {
+            sound.SoundPlay.playSoundNonReset("sound/click.wav");
+            this.dispose();
+            new Syantonym();
         }
         if(e.getSource().equals(buttonAudio)) {
             sound.SoundPlay.playSoundNonReset("sound/click.wav");
