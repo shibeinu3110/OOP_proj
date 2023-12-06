@@ -23,12 +23,15 @@ public class Syantonym extends JFrame implements BaseAbstractClass, ActionListen
     //public long end = Calendar.getInstance().getTimeInMillis(); //Timer
 
     //protected JSplitPane split;
-    JButton buttonBack , buttonTrans, buttonSoundEng, buttonSoundVie, buttonAudio;
+    JButton buttonBack , buttonTrans, buttonAudio;
 
     JTextArea textFieldQues;
     JTextArea textFieldAns;
     JPanel jPanelTop, jPanelBot;
+    JLabel labelSearchBar;
 
+    String[] option = {"Từ đồng nghĩa", "Từ trái nghĩa"};
+    JComboBox jComboBox1;
 
 
 
@@ -81,10 +84,18 @@ public class Syantonym extends JFrame implements BaseAbstractClass, ActionListen
     @Override
     public void addToBot()
     {
+
+        labelSearchBar = new JLabel("⁂ Nhập từ cần tìm ⁂");
+        labelSearchBar.setFont(new Font(Font.MONOSPACED, Font.BOLD, 16));
+        labelSearchBar.setForeground(Color.white);
+        labelSearchBar.setBounds(100, 40, 240, 25);
+        jPanelBot.add(labelSearchBar);
+
         JLabel label1 = new JLabel();
         ImageIcon imageIcon1 = new ImageIcon(bg5.getImage());
         label1.setIcon(imageIcon1);
         label1.setBounds(0,0,900,550);
+
         //button
         buttonBack = new RoundButton("Back",20,20);
 
@@ -137,6 +148,11 @@ public class Syantonym extends JFrame implements BaseAbstractClass, ActionListen
         }
         jPanelBot.add(buttonAudio);
 
+        jComboBox1 = new JComboBox(option);
+        jComboBox1.setBounds(585,40,200,30);
+
+
+        jPanelBot.add(jComboBox1);
         jPanelBot.add(label1);
     }
 
@@ -152,8 +168,13 @@ public class Syantonym extends JFrame implements BaseAbstractClass, ActionListen
         if(e.getSource().equals(buttonTrans))
         {
             sound.SoundPlay.playSoundNonReset("sound/click.wav");
+            ArrayList<String> ans = new ArrayList<>();
             try {
-                ArrayList<String> ans = SynonymAPI.getSynonym(this.textFieldQues.getText());
+                if (jComboBox1.getSelectedItem().equals("Từ đồng nghĩa")) {
+                    ans = SynonymAPI.getSynonym(this.textFieldQues.getText());
+                } else {
+                    ans = SynonymAPI.getAntonym(this.textFieldQues.getText());
+                }
                 String s = SynonymAPI.convert(ans);
                 this.textFieldAns.setText(s);
             } catch (IOException ex) {

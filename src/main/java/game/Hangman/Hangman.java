@@ -212,7 +212,6 @@ public class Hangman extends JFrame implements ActionListener {
                         setBoundsHiddenWord();
                         if (!hiddenWordLabel.getText().contains("_")) {
                             //win
-                            sound.SoundPlay.playSoundNonReset("sound/happy-happy-happy-song.wav");
                             resultLabel.setText("Hooray! You saved Pikachu");
                             resultDialog.setVisible(true);
                         }

@@ -105,7 +105,7 @@ public class Menu extends JFrame implements BaseAbstractClass, ActionListener {
         buttonSyantonym.setBounds(350, 320-20, 200, 60);
         buttonSyantonym.addActionListener(this);
         buttonSyantonym.setToolTipText("Tìm từ đồng/trái nghĩa");
-        buttonSyantonym.setIcon(iconGame);
+        buttonSyantonym.setIcon(synonym);
         jPanelRight.add(buttonSyantonym);
 
         buttonSetting = new RoundButton("Cài đặt",20,20);

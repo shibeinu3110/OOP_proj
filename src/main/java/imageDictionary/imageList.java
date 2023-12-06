@@ -38,4 +38,5 @@ public class imageList {
     public static final ImageIcon modifyP2 = new ImageIcon("src/main/java/UI/modifyP2.jpg");
     public static final ImageIcon simpP = new ImageIcon("src/main/java/UI/simpP.jpg");
     public static final ImageIcon restart = new ImageIcon("src/main/java/UI/restart.png");
+    public static final ImageIcon synonym = new ImageIcon("src/main/java/UI/synonym.png");
 }

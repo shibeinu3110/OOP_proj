@@ -33,7 +33,7 @@ public class DictPanel extends JFrame implements ListSelectionListener,
     JPanel panelLeftTop, panelLeftBot, panelRightTop, panelRightBottom;
     JLabel labelLogo, labelSearchBar, labelDescription;
     JFormattedTextField searchBar;
-    JButton buttonSearch, buttonClear, buttonUp, buttonDown, buttonAdd, buttonDelete, buttonEdit, buttonStar,buttonAudio,buttonSoundUK, buttonSoundUS, buttonBack;
+    JButton buttonSearch, buttonClear, buttonAdd, buttonDelete, buttonEdit, buttonStar,buttonAudio,buttonSoundUK, buttonSoundUS, buttonBack;
 
     JList<String> listWord, listRecent, listMark;
     JScrollPane scrollPaneWord, scrollPaneRecent, scrollPaneMark;
