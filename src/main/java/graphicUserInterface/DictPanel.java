@@ -199,8 +199,8 @@ public class DictPanel extends JFrame implements ListSelectionListener,
         panelLeftBot.add(buttonClear);
 
 
-        buttonAudio = new RoundButton("",45,45);
-        buttonAudio.setBounds(10, 0, 25, 25);
+        buttonAudio = new RoundButton("",100,100);
+        buttonAudio.setBounds(8, 0, 29, 29);
         buttonAudio.addActionListener(this);
         if (Setting.isPlaying) {
             buttonAudio.setIcon(iconAudioOff);
