@@ -107,7 +107,8 @@ public class Hangman extends JFrame implements ActionListener {
             buttonPanel.add(letterButtons[currentIndex]);
         }
 
-        buttonAudio = new RoundButton("",20,20);
+        buttonAudio = new JButton("");
+        buttonAudio.setSize(20,20);
         buttonAudio.addActionListener(this);
         if (Setting.isPlaying) {
             buttonAudio.setIcon(iconAudioOff);
@@ -119,17 +120,19 @@ public class Hangman extends JFrame implements ActionListener {
         jPanel.add(buttonAudio);
 
         //restart button
-        restartButton = new RoundButton("", 20,20);
+        restartButton = new JButton("");
         restartButton.addActionListener(this);
         restartButton.setIcon(restart);
         restartButton.setToolTipText("Nhấn đề chơi lại");
+        restartButton.setSize(20, 20);
         jPanel.add(restartButton);
 
 
-        buttonBack = new RoundButton("", 20,20);
+        buttonBack = new JButton("");
         buttonBack.addActionListener(this);
         buttonBack.setIcon(iconBack);
         buttonBack.setToolTipText("Nhấn để quay lại");
+        buttonBack.setSize(20, 20);
         jPanel.add(buttonBack);
 
 
