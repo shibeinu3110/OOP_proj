@@ -78,7 +78,7 @@ public class Menu extends JFrame implements BaseAbstractClass, ActionListener {
 
         buttonDictPanel = new RoundButton("Tra từ",20,20);
 
-        buttonDictPanel.setBounds(350, 80, 200, 60);
+        buttonDictPanel.setBounds(350, 80-20, 200, 60);
 
         buttonDictPanel.addActionListener(this);
         buttonDictPanel.setToolTipText("Tra từ");
@@ -87,7 +87,7 @@ public class Menu extends JFrame implements BaseAbstractClass, ActionListener {
 
 
         buttonNW = new RoundButton("Dịch văn bản",20,20);
-        buttonNW.setBounds(350, 160, 200, 60);
+        buttonNW.setBounds(350, 160-20, 200, 60);
         buttonNW.addActionListener(this);
         buttonNW.setToolTipText("Dịch văn bản");
         buttonNW.setIcon(iconTrans);
@@ -95,21 +95,21 @@ public class Menu extends JFrame implements BaseAbstractClass, ActionListener {
 
 
         buttonGame = new RoundButton("Trò chơi",20,20);
-        buttonGame.setBounds(350, 240, 200, 60);
+        buttonGame.setBounds(350, 240-20, 200, 60);
         buttonGame.addActionListener(this);
         buttonGame.setToolTipText("Trò chơi");
         buttonGame.setIcon(iconGame);
         jPanelRight.add(buttonGame);
 
         buttonSyantonym = new RoundButton("Từ đồng/trái nghĩa",20,20);
-        buttonSyantonym.setBounds(350, 320, 200, 60);
+        buttonSyantonym.setBounds(350, 320-20, 200, 60);
         buttonSyantonym.addActionListener(this);
         buttonSyantonym.setToolTipText("Tìm từ đồng/trái nghĩa");
         buttonSyantonym.setIcon(iconGame);
         jPanelRight.add(buttonSyantonym);
 
         buttonSetting = new RoundButton("Cài đặt",20,20);
-        buttonSetting.setBounds(350, 400, 200, 60);
+        buttonSetting.setBounds(350, 400-20, 200, 60);
         buttonSetting.addActionListener(this);
         buttonSetting.setToolTipText("Cài đặt");
         buttonSetting.setIcon(iconSetting);

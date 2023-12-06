@@ -29,8 +29,7 @@ public class Syantonym extends JFrame implements BaseAbstractClass, ActionListen
     JTextArea textFieldAns;
     JPanel jPanelTop, jPanelBot;
 
-    //boolean engToVie;
-    //String[] option = {"Tiếng Anh -- English", "Tiếng Việt -- Vietnamese"};
+
 
 
 
@@ -74,7 +73,7 @@ public class Syantonym extends JFrame implements BaseAbstractClass, ActionListen
     public void addToTop()
     {
         JLabel label1 = new JLabel();
-        ImageIcon imageIcon1 = new ImageIcon(transP.getImage());
+        ImageIcon imageIcon1 = new ImageIcon(simpP.getImage());
         label1.setIcon(imageIcon1);
         label1.setBounds(0,0,900,150);
         jPanelTop.add(label1);

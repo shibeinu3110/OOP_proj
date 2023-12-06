@@ -36,7 +36,12 @@ public class SynonymAPI {
         result = result.replaceAll("[\"{}\\[\\]]", "");
 
         result = result.replaceAll("(hypernyms|hyponyms|antonyms)", "\n\n$1");
-
+        result = result.replaceAll("synonyms" , " ❋ Synonyms\n");
+        result = result.replaceAll("antonyms" , " ❋ Antonyms\n");
+        result = result.replaceAll("hypernyms" , " ❋ Hypernyms\n");
+        result = result.replaceAll("hyponyms" , " ❋ Hyponyms\n");
+        result = result.replaceAll(",","\n    ⇨");
+        result = result.replaceAll(":","\n    ⇨");
         return result.trim();
     }
 }

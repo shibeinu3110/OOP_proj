@@ -3,7 +3,7 @@ package imageDictionary;
 import javax.swing.*;
 
 public class imageList {
-    public static final ImageIcon iconLogo = new ImageIcon("src/main/java/UI/dictLogo.png");
+    public static final ImageIcon iconLogo = new ImageIcon("src/main/java/UI/dictLogo.jpg");
     public static final ImageIcon iconSearch = new ImageIcon("src/main/java/UI/glass.png");
     public static final ImageIcon iconClear = new ImageIcon("src/main/java/UI/clear.png");
 
@@ -36,5 +36,6 @@ public class imageList {
     public static final ImageIcon addP2 = new ImageIcon("src/main/java/UI/addP2.jpg");
     public static final ImageIcon modifyP = new ImageIcon("src/main/java/UI/modifyP.jpg");
     public static final ImageIcon modifyP2 = new ImageIcon("src/main/java/UI/modifyP2.jpg");
+    public static final ImageIcon simpP = new ImageIcon("src/main/java/UI/simpP.jpg");
     public static final ImageIcon restart = new ImageIcon("src/main/java/UI/restart.png");
 }

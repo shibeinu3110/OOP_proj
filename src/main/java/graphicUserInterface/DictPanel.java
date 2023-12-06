@@ -150,7 +150,7 @@ public class DictPanel extends JFrame implements ListSelectionListener,
      */
     void addPanelLeftTop() {
         labelLogo = new JLabel();
-        ImageIcon imageDictLogo = new ImageIcon(bg4.getImage());
+        ImageIcon imageDictLogo = new ImageIcon(iconLogo.getImage());
         labelLogo.setIcon(imageDictLogo);
         labelLogo.setBounds(0, 0, 290, 110);
         panelLeftTop.add(labelLogo);
